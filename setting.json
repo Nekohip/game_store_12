@@ -1,0 +1,26 @@
+{
+    "editor.fontSize": 20,
+    "files.autoSave": "afterDelay",
+    "liveServer.settings.AdvanceCustomBrowserCmdLine": "",
+    "liveServer.settings.CustomBrowser": "chrome",
+    "editor.minimap.enabled": false,
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "php": false,
+        "css": false,
+        "html": false
+    },
+
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "breadcrumbs.enabled": false,
+    "editor.stickyScroll.enabled": false,
+    "terminal.integrated.fontSize": 16,
+    "workbench.iconTheme": "catppuccin-mocha",
+    "workbench.colorTheme": "Bearded Theme Arc Reversed",
+    "php.validate.executablePath": "C:/xampp/php/php.exe",
+    "terminal.integrated.fontFamily": "JetBrains Mono Light, Noto Sans TC Light, monospace",
+    "editor.fontFamily": "JetBrains Mono ExtraLight, Noto Sans TC Light, monospace"
+}
