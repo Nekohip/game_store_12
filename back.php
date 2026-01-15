@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>set_carousel1_img</title>
+    <title>後台管理</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.bundle.min.js"
             integrity="sha512-HvOjJrdwNpDbkGJIG2ZNqDlVqMo77qbs4Me4cah0HoDrfhrbA+8SBlZn1KrvAQw7cILLPFJvdwIgphzQmMm+Pw=="
@@ -11,19 +11,30 @@
             referrerpolicy="no-referrer"></script>
 
     <style>
-        .container1 {
-            width: 80%;
-            height: 50vh;
-            border: 1px black solid;
-            margin: auto;
+        * {
+            box-sizing: border-box;
+        }
+
+        .header {
+            background-color: blue;
+            width: 100%;
+            height: 20vh;
+        }
+
+        .main {
+            background-color: red;
+            width: 10%;
+            height: 100vh;
         }
     </style>
 </head>
 <body>
-    <div class="container1">
-        <form action="../api/carousel1.php" method="get">
-            <>
-        </form>
+    <div class="container header">
+    </div>
+
+    <div class="container main">
+        <div class="row">
+        </div>
     </div>
 </body>
 </html>
