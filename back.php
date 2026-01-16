@@ -10,6 +10,11 @@
             crossorigin="anonymous" 
             referrerpolicy="no-referrer"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" 
+          integrity="sha512-2bBQCjcnw658Lho4nlXJcc6WkV/UxpE/sAokbXPxQNGqmNdQrWqtw26Ns9kFF/yG792pKR1Sx8/Y1Lf1XN4GKA==" 
+          crossorigin="anonymous" 
+          referrerpolicy="no-referrer" />
+
     <style>
         * {
             box-sizing: border-box;
@@ -17,24 +22,42 @@
 
         .header {
             background-color: blue;
-            width: 100%;
             height: 20vh;
         }
 
-        .main {
+        .sidebar {
             background-color: red;
-            width: 10%;
-            height: 100vh;
+            height: 80vh;
         }
+
+        .main {
+            background-color: yellow;
+        }
+
+        .center {
+            background-color: green;
+            /* width: 500px; */
+            height: 80vh;
+        }
+        
     </style>
 </head>
 <body>
-    <div class="container header">
+    <div class="container-12 header">
     </div>
 
-    <div class="container main">
+    <div class="container-12 main">
         <div class="row">
+            <div class="col-sm-2 sidebar">
+            
+            </div>
+
+            <div class="col-sm-10 center">
+            
+            </div>
         </div>
+
     </div>
+
 </body>
 </html>
