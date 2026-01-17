@@ -23,11 +23,14 @@
         .header {
             background-color: blue;
             height: 20vh;
+            width: 84%;
         }
 
         .sidebar {
             background-color: red;
             height: 80vh;
+            margin-top: -100px;
+            z-index: 2;
         }
 
         .main {
@@ -36,24 +39,25 @@
 
         .center {
             background-color: green;
-            /* width: 500px; */
-            height: 80vh;
+            height: 120vh;
+            margin-left: 340px;
+            margin-top: 201px;
         }
         
     </style>
 </head>
 <body>
-    <div class="container-12 header">
+    <div class="container-12 header position-fixed top-0 end-0">
     </div>
 
     <div class="container-12 main">
         <div class="row">
-            <div class="col-sm-2 sidebar">
+            <div class="col-sm-2 sidebar position-fixed start-0 top-0">
             
             </div>
 
             <div class="col-sm-10 center">
-            
+            1111111111111111111111
             </div>
         </div>
 
