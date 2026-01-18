@@ -23,39 +23,47 @@
         .header {
             background-color: blue;
             height: 20vh;
-            width: 84%;
+            width: 100%;
         }
 
         .sidebar {
             background-color: red;
+            border: 1px black solid;
             height: 80vh;
-            margin-top: -100px;
-            z-index: 2;
+            width: 200px;
+            margin-top: 241px;
         }
 
         .main {
             background-color: yellow;
         }
 
+        .main>.row {
+            display: flex;
+            justify-content: center;
+        }
+
         .center {
             background-color: green;
             height: 120vh;
-            margin-left: 340px;
-            margin-top: 201px;
+            width: 1400px;
+            margin-top: 242px;
+            margin-left: 400px;
+            padding-left: 100px;
         }
         
     </style>
 </head>
 <body>
-    <div class="container-12 header position-fixed top-0 end-0">
+    <div class="header position-fixed top-0 end-0">
     </div>
 
-    <div class="container-12 main">
-        <div class="row">
-            <div class="col-sm-2 sidebar position-fixed start-0 top-0">
-            
-            </div>
+    <div class="d-flex flex-row main">
+        <div class="d-flex flex-column sidebar flex-shrink-0 position-fixed start-0">
 
+        </div>
+
+        <div class="row">
             <div class="col-sm-10 center">
             1111111111111111111111
             </div>
