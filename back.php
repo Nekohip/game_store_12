@@ -29,9 +29,9 @@
         .sidebar {
             background-color: red;
             border: 1px black solid;
-            height: 80vh;
-            width: 200px;
-            margin-top: 241px;
+            height: 70vh;
+            width: 13%;
+            margin-top: 219px;
         }
 
         .main {
@@ -46,9 +46,9 @@
         .center {
             background-color: green;
             height: 120vh;
-            width: 1400px;
+            width: 90%;
             margin-top: 242px;
-            margin-left: 400px;
+            margin-left: 700px;
             padding-left: 100px;
         }
         
