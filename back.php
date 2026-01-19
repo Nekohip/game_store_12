@@ -46,10 +46,9 @@
         .center {
             background-color: green;
             height: 120vh;
-            width: 90%;
-            margin-top: 242px;
-            margin-left: 700px;
-            padding-left: 100px;
+            width: 65%;
+            margin-top: 233px;
+            margin-left: 417px;
         }
         
     </style>
@@ -59,13 +58,13 @@
     </div>
 
     <div class="d-flex flex-row main">
-        <div class="d-flex flex-column sidebar flex-shrink-0 position-fixed start-0">
+        <div class="container d-flex flex-column flex-shrink-0 position-fixed start-0 sidebar">
 
         </div>
 
-        <div class="row">
-            <div class="col-sm-10 center">
-            1111111111111111111111
+        <div class="container center">
+            <div class="row">
+                1111111111111111111111
             </div>
         </div>
 
