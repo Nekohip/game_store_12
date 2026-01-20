@@ -50,6 +50,10 @@
             margin-top: 233px;
             margin-left: 417px;
         }
+
+        .nav-item {
+            margin-top: 5px;
+        }
         
     </style>
 </head>
@@ -57,14 +61,45 @@
     <div class="header position-fixed top-0 end-0">
     </div>
 
-    <div class="d-flex flex-row main">
+    <div class="d-flex flex-row container-fluid main">
         <div class="container d-flex flex-column flex-shrink-0 position-fixed start-0 sidebar">
+            <ul class="nav nav-pills nav-fill d-flex flex-column">
+                <li class="nav-item">
+                    <a href="?do=carousel1" class="nav-link active">
+                        Carousel NO.1
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link active">
+                        123
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link active">
+                        123
+                    </a>
+                </li>
+            </ul>
 
         </div>
 
         <div class="container center">
             <div class="row">
-                1111111111111111111111
+                <?php
+                    if(isset($_GET["do"]))
+                    {
+                        switch($_GET["do"])
+                        {
+                            case "carousel1" :
+                                include "./back/carousel1.php";
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        include "./back/white.php";
+                    }
+                ?>
             </div>
         </div>
 

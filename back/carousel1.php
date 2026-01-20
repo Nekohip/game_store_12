@@ -22,7 +22,7 @@
 <body>
     <div class="container1">
         <form action="../api/carousel1.php" method="get">
-            <>
+            set_carousel1_img
         </form>
     </div>
 </body>
