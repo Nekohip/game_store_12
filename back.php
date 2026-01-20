@@ -27,7 +27,7 @@
         }
 
         .sidebar {
-            background-color: red;
+            /* background-color: red; */
             border: 1px black solid;
             height: 70vh;
             width: 13%;
@@ -35,7 +35,7 @@
         }
 
         .main {
-            background-color: yellow;
+            /* background-color: yellow; */
         }
 
         .main>.row {
@@ -44,7 +44,8 @@
         }
 
         .center {
-            background-color: green;
+            /* background-color: green; */
+            border: 1px black solid;
             height: 120vh;
             width: 65%;
             margin-top: 233px;
@@ -71,12 +72,12 @@
                 </li>
                 <li class="nav-item">
                     <a href="" class="nav-link active">
-                        123
+                        AAA
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="" class="nav-link active">
-                        123
+                        BBB
                     </a>
                 </li>
             </ul>
@@ -84,7 +85,6 @@
         </div>
 
         <div class="container center">
-            <div class="row">
                 <?php
                     if(isset($_GET["do"]))
                     {
@@ -100,7 +100,6 @@
                         include "./back/white.php";
                     }
                 ?>
-            </div>
         </div>
 
     </div>

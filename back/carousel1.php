@@ -11,19 +11,26 @@
             referrerpolicy="no-referrer"></script>
 
     <style>
-        .container1 {
-            width: 80%;
-            height: 50vh;
-            border: 1px black solid;
-            margin: auto;
+        .submit {
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="container1">
-        <form action="../api/carousel1.php" method="get">
-            set_carousel1_img
-        </form>
-    </div>
+    <form action="../api/carousel1.php" method="post">
+        <div class="row">
+            <div class="col-4">
+                <label for="img" class="form-label">Carousel NO.1 圖片</label>
+                    <input class="form-control" type="file" id="img" name="img">
+                </label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3 submit">
+                <button type="submit" class="btn btn-primary mb-3">儲存</button>
+            </div>
+        </div>
+    </form>
 </body>
 </html>
