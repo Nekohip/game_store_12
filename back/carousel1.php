@@ -17,7 +17,7 @@
     </style>
 </head>
 <body>
-    <form action="../api/carousel1.php" method="post">
+    <form action="../api/carousel1.php" method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col-4">
                 <label for="img" class="form-label">Carousel NO.1 圖片</label>
@@ -29,6 +29,7 @@
         <div class="row">
             <div class="col-3 submit">
                 <button type="submit" class="btn btn-primary mb-3">儲存</button>
+                <button type="reset" class="btn btn-primary mb-3">重置</button>
             </div>
         </div>
     </form>
