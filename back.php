@@ -64,19 +64,19 @@
 
     <div class="d-flex flex-row container-fluid main">
         <div class="container d-flex flex-column flex-shrink-0 position-fixed start-0 sidebar">
-            <ul class="nav nav-pills nav-fill d-flex flex-column">
+            <ul class="nav nav-pills d-flex flex-column">
                 <li class="nav-item">
-                    <a href="?do=carousel1" class="nav-link active">
+                    <a href="?do=carousel1" class="btn btn-outline-primary w-100">
                         Carousel NO.1
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link active">
+                    <a href="" class="btn btn-outline-primary w-100">
                         AAA
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link active">
+                    <a href="" class="btn btn-outline-primary w-100">
                         BBB
                     </a>
                 </li>

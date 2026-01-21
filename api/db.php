@@ -14,6 +14,5 @@ Class DB
         $this -> table = $tb;
     }
 
-
 }
 ?>
