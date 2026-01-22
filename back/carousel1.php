@@ -17,11 +17,11 @@
     </style>
 </head>
 <body>
-    <form action="../api/carousel1.php" method="post" enctype="multipart/form-data">
+    <h4>Carousel 1</h4>
         <div class="row">
             <div class="col-4">
-                <label for="img" class="form-label">Carousel NO.1 圖片</label>
-                    <input class="form-control" type="file" id="img" name="img">
+                <label for="text" class="form-label">標題</label>
+                    
                 </label>
             </div>
         </div>

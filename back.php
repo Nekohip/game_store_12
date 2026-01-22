@@ -67,7 +67,7 @@
             <ul class="nav nav-pills d-flex flex-column">
                 <li class="nav-item">
                     <a href="?do=carousel1" class="btn btn-outline-primary w-100">
-                        Carousel NO.1
+                        Carousel 1
                     </a>
                 </li>
                 <li class="nav-item">
