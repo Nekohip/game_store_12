@@ -14,6 +14,6 @@ Class DB
         $this -> table = $tb;
     }
 
-    $sql = "SELECT * FROM `carousel` ";
+    private $sql = "SELECT * FROM `carousel` ";
 }
 ?>

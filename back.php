@@ -46,10 +46,11 @@
         .center {
             /* background-color: green; */
             border: 1px black solid;
-            height: 120vh;
+            /* height: 120vh; */
             width: 65%;
             margin-top: 233px;
             margin-left: 417px;
+            margin-bottom: 50px;
         }
 
         .nav-item {
