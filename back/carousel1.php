@@ -9,29 +9,96 @@
             integrity="sha512-HvOjJrdwNpDbkGJIG2ZNqDlVqMo77qbs4Me4cah0HoDrfhrbA+8SBlZn1KrvAQw7cILLPFJvdwIgphzQmMm+Pw=="
             crossorigin="anonymous" 
             referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" 
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" 
+            crossorigin="anonymous" 
+            referrerpolicy="no-referrer"></script>
 
     <style>
         .submit {
             margin-top: 10px;
         }
+
+        .content {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .btns {
+            float: right;
+            width: 27%;
+        }
     </style>
 </head>
 <body>
+<?php
+    $dsn = "mysql:host=localhost; 
+            dbname=game_store_12_db;
+            charset=utf8";
+    $pdo = new PDO($dsn, "root", "");
+    $sql = "SELECT * FROM `carousel1`";
+    $rows = $pdo -> query($sql) -> fetchAll();
+?>
     <h4>Carousel 1</h4>
-        <div class="row">
-            <div class="col-4">
-                <label for="text" class="form-label">標題</label>
-                    
-                </label>
+    <div class="row">
+        <?php foreach($rows as $key): ?>
+        <div class="col-6">
+            <div class="content">標題:<?= $key["text"] ?></div>
+            <div class="content">
+                圖片:
+                <img src="../upload/<?= $key["img"] ?>" style="width:500px;">
             </div>
+            <div class="content">
+                縮圖:
+                <img src="../upload/<?= $key["thumb"] ?>" style="width:500px;">
+            </div>
+            <div class="content btns">
+                <button class="btn btn-primary" id="editBtn">編輯</button>
+                <button class="btn btn-danger">刪除</button>
+            </div>       
         </div>
+        <?php endforeach ?>
+    </div>
+    <form active="../api/carousel1.php">
+        <div class="modal" id="editModal">
+            <div class="modal-dialog">
+                <!-- modal區塊 -->
+                <div class="modal-content">
 
-        <div class="row">
-            <div class="col-3 submit">
-                <button type="submit" class="btn btn-primary mb-3">儲存</button>
-                <button type="reset" class="btn btn-primary mb-3">重置</button>
+                    <div class="modal-header">
+                        <h3 class="modal-title">編輯</h3>
+                        <!-- X按鈕 -->
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <input type="hide" value="">
+                    </div>
+
+                    <div class="modal-footer">
+                        <!-- btn:無框文字按鈕 btn-danger:有框，有btn才變色 -->
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">確定</button>
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">取消</button>
+                    </div>
+                </div>
             </div>
         </div>
     </form>
 </body>
+
+<script>
+    $(document).ready(function()
+    {
+        const editBtn = $("#editBtn");
+        const editModal = $("#editModal");
+        console.log("editBtn", editBtn);
+        console.log("editModal", editModal);
+
+        editBtn.click(function()
+        {
+            editModal.show();
+        });
+    });
+</script>
 </html>
