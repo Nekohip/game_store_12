@@ -42,63 +42,77 @@
 ?>
     <h4>Carousel 1</h4>
     <div class="row">
-        <?php foreach($rows as $key): ?>
+        <?php foreach($rows as $row): ?>
         <div class="col-6">
-            <div class="content">標題:<?= $key["text"] ?></div>
+            <div class="content">標題:<?= $row["text"] ?></div>
             <div class="content">
                 圖片:
-                <img src="../upload/<?= $key["img"] ?>" style="width:500px;">
+                <img src="../upload/<?= $row["img"] ?>" style="width:500px;">
             </div>
             <div class="content">
                 縮圖:
-                <img src="../upload/<?= $key["thumb"] ?>" style="width:500px;">
+                <img src="../upload/<?= $row["thumb"] ?>" style="width:500px;">
             </div>
             <div class="content btns">
-                <button class="btn btn-primary" id="editBtn">編輯</button>
+                <button class="btn btn-primary editBtn" data-bs-id="<?= $row["id"] ?>">編輯</button>
                 <button class="btn btn-danger">刪除</button>
             </div>       
-        </div>
+        </div> 
         <?php endforeach ?>
     </div>
-    <form active="../api/carousel1.php">
-        <div class="modal" id="editModal">
-            <div class="modal-dialog">
-                <!-- modal區塊 -->
-                <div class="modal-content">
+    <div class="modal editModal" id="editModal">
+        <div class="modal-dialog">
+            <!-- modal區塊 -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">編輯</h3>
+                </div>
 
-                    <div class="modal-header">
-                        <h3 class="modal-title">編輯</h3>
-                        <!-- X按鈕 -->
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-
-                    <div class="modal-body">
-                        <input type="hide" value="">
-                    </div>
-
-                    <div class="modal-footer">
-                        <!-- btn:無框文字按鈕 btn-danger:有框，有btn才變色 -->
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">確定</button>
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">取消</button>
-                    </div>
+                <div class="modal-body">
+                    <form active="../api/carousel1.php">
+                        <input type="text" class="id" name="id" value="">
+                        <button type="submit" class="btn btn-primary">確定</button>
+                        <button type="button" class="btn btn-light dismiss">取消</button>
+                    </form>
                 </div>
             </div>
         </div>
-    </form>
+    </div>
+
 </body>
 
 <script>
     $(document).ready(function()
     {
-        const editBtn = $("#editBtn");
-        const editModal = $("#editModal");
-        console.log("editBtn", editBtn);
-        console.log("editModal", editModal);
 
-        editBtn.click(function()
+        const dismiss = $(".dismiss")
+        const id = $(".id")
+        console.log("dismiss", dismiss);
+        console.log("id", id);
+
+        const edits = {};
+        const modals = {};
+        const count = $(".editBtn").length;
+        for(let i = 0; i <= count; i++)
         {
-            editModal.show();
+            edits[`edit${i}`] = $(`#editBtn${i}`);
+            modals[`modal${i}`] = $(`#editModal${i}`);
+            edits[`edit${i}`].click(function()
+            {
+                modals[`modal${i}`].show();
+                let thisId = edits[`edit${i}`].attr("data-bs-id");
+                id.attr("value", thisId);
+            });
+        }
+
+        dismiss.click(function()
+        {
+            editModal.hide();
         });
+
+        
+
+
     });
 </script>
 </html>
