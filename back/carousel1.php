@@ -56,7 +56,9 @@
             <div class="content btns">
                 <button class="btn btn-primary editBtn" 
                         data-bs-id="<?= $row["id"] ?>"
-                        data-bs-text="<?= $row["text"] ?>">
+                        data-bs-text="<?= $row["text"] ?>"
+                        data-bs-img="<?= $row["img"] ?>"
+                        data-bs-thumb="<?= $row["thumb"] ?>">
                     編輯
                 </button>
 
@@ -73,21 +75,27 @@
                     <h3 class="modal-title">編輯</h3>
                 </div>
 
-                <div class="modal-body ">
-                    <form active="../api/carousel1.php" >
+                <div class="modal-body">
+                    <form action="../api/carousel1.php" method="post" enctype="multipart/form-data">
                         <input type="hidden" id="modalId" name="id" value="" >
+
                         <label for="modalText" class="modal-text">標題:</label>
                         <input type="text" id="modalText" name="text" value=""><br>
+
                         <label for="modalImg" class="modal-text">上傳圖片:</label>
-                        <input type="file" name="img" value=""><br>
+                        <input type="file" id="modalImg" name="img" value=""><br>
+
                         <label for="modalThumb" class="modal-text">上傳縮圖:</label>
-                        <input type="file" name="thumb" value=""><br>
+                        <input type="file" id="modalThumb" name="thumb" value=""><br>
+
                         <label for="modalThumb" class="modal-text">顯示:</label>
-                        <input type="checkbox" name="sh" style="width:21px; height:21px" <?= $row["sh"] == 1 ? "checked" : ""?>><br>
-                        <div class="btns content">
-                            <button type="submit" class="btn btn-primary">確定</button>
-                            <button type="button" class="btn btn-light dismiss">取消</button>
-                        </div>
+                        <input type="checkbox" id = "modalThumb" name="sh" 
+                               style="width:21px; height:21px"
+                               value=<?= $row["id"] ?>
+                               <?= $row["sh"] == 1 ? "checked" : ""?>><br>
+
+                        <input type="submit" class="btn btn-primary" value="確定"></button>
+                        <button type="button" class="btn btn-light dismiss">取消</button>
                     </form>
                 </div>
             </div>
@@ -104,15 +112,24 @@
         const editModal = $(".editModal");
         const id = $("#modalId");
         const text = $("#modalText");
+        const img = $("#modalImg");
+        const thumb = $("#modalThumb");
+
+        console.log("img", img);
+        console.log("thumb", thumb);
         
         editBtn.click(function()
         {
             editModal.show();
             let thisId = $(this).attr("data-bs-id");
             let thisText = $(this).attr("data-bs-text");
+            let thisImg = $(this).attr("data-bs-img");
+            let thisThumb = $(this).attr("data-bs-thumb");
 
             id.attr("value", thisId);
             text.attr("value", thisText);
+            img.attr("value",thisImg);
+            thumb.attr("value",thisThumb);
         });
 
         dismiss.click(function()

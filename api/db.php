@@ -18,6 +18,20 @@ Class DB
         $sql = "SELECT * FROM `$this->table`";
         return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function update($row)
+    {
+        $sql = "UPDATE `$this->table` 
+                SET 
+                    `text` = '{$row['text']}',
+                    `img` = '{$row['img']}',
+                    `thumb` = '{$row['thumb']}',
+                    `sh` = '{$row['sh']}'
+                WHERE
+                    `id` = {$row['id']}";
+
+        return $this->pdo->exec($sql);
+    }
 }
 
 $Carousel1 = new DB("carousel1");
