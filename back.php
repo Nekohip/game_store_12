@@ -31,7 +31,7 @@
             border: 1px black solid;
             height: 70vh;
             width: 13%;
-            margin-top: 219px;
+            margin-top: 270px;
         }
 
         .main {
@@ -48,8 +48,8 @@
             border: 1px black solid;
             /* height: 120vh; */
             width: 65%;
-            margin-top: 233px;
-            margin-left: 417px;
+            margin-top: 280px;
+            margin-left: 560px;
             margin-bottom: 50px;
         }
 

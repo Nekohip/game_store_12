@@ -27,7 +27,13 @@
 
         .btns {
             float: right;
-            width: 27%;
+            width: 32%;
+        }
+
+        .modal-text {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 15px;
         }
     </style>
 </head>
@@ -46,21 +52,24 @@
         <div class="col-6">
             <div class="content">標題:<?= $row["text"] ?></div>
             <div class="content">
-                圖片:
-                <img src="../upload/<?= $row["img"] ?>" style="width:500px;">
+                圖片:<img src="../upload/<?= $row["img"] ?>" style="width:500px;">
             </div>
             <div class="content">
-                縮圖:
-                <img src="../upload/<?= $row["thumb"] ?>" style="width:500px;">
+                縮圖:<img src="../upload/<?= $row["thumb"] ?>" style="width:500px;">
             </div>
             <div class="content btns">
-                <button class="btn btn-primary editBtn" data-bs-id="<?= $row["id"] ?>" data-bs-text="<?= $row["text"] ?>">編輯</button>
+                <button class="btn btn-primary editBtn" 
+                        data-bs-id="<?= $row["id"] ?>"
+                        data-bs-text="<?= $row["text"] ?>">
+                    編輯
+                </button>
+
                 <button class="btn btn-danger">刪除</button>
             </div>       
         </div> 
         <?php endforeach ?>
     </div>
-    <div class="modal editModal" id="editModal">
+    <div class="modal editModal">
         <div class="modal-dialog">
             <!-- modal區塊 -->
             <div class="modal-content">
@@ -68,12 +77,19 @@
                     <h3 class="modal-title">編輯</h3>
                 </div>
 
-                <div class="modal-body">
-                    <form active="../api/carousel1.php">
-                        <input type="text" id="modalId" name="id" value="">
-                        <input type="text" id="modalText" name="text" value="">
-                        <button type="submit" class="btn btn-primary">確定</button>
-                        <button type="button" class="btn btn-light dismiss">取消</button>
+                <div class="modal-body ">
+                    <form active="../api/carousel1.php" >
+                        <input type="hidden" id="modalId" name="id" value="" >
+                        <label for="modalText" class="modal-text">標題:</label>
+                        <input type="text" id="modalText" name="text" value=""><br>
+                        <label for="modalImg" class="modal-text">上傳圖片:</label>
+                        <input type="file" name="img" value=""><br>
+                        <label for="modalThumb" class="modal-text">上傳縮圖:</label>
+                        <input type="file" name="thumb" value=""><br>
+                        <div class="btns content">
+                            <button type="submit" class="btn btn-primary">確定</button>
+                            <button type="button" class="btn btn-light dismiss">取消</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -90,14 +106,13 @@
         const editModal = $(".editModal");
         const id = $("#modalId");
         const text = $("#modalText");
-        console.log("dismiss", dismiss);
-        console.log("id", id);
         
         editBtn.click(function()
         {
             editModal.show();
             let thisId = $(this).attr("data-bs-id");
             let thisText = $(this).attr("data-bs-text");
+
             id.attr("value", thisId);
             text.attr("value", thisText);
         });
@@ -106,10 +121,6 @@
         {
             editModal.hide();
         });
-
-        
-
-
     });
 </script>
 </html>
