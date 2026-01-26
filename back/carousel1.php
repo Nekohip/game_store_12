@@ -39,12 +39,8 @@
 </head>
 <body>
 <?php
-    $dsn = "mysql:host=localhost; 
-            dbname=game_store_12_db;
-            charset=utf8";
-    $pdo = new PDO($dsn, "root", "");
-    $sql = "SELECT * FROM `carousel1`";
-    $rows = $pdo -> query($sql) -> fetchAll();
+    include "./api/db.php";
+    $rows = $Carousel1->all();
 ?>
     <h4>Carousel 1</h4>
     <div class="row">
@@ -86,6 +82,8 @@
                         <input type="file" name="img" value=""><br>
                         <label for="modalThumb" class="modal-text">上傳縮圖:</label>
                         <input type="file" name="thumb" value=""><br>
+                        <label for="modalThumb" class="modal-text">顯示:</label>
+                        <input type="checkbox" name="sh" style="width:21px; height:21px" <?= $row["sh"] == 1 ? "checked" : ""?>><br>
                         <div class="btns content">
                             <button type="submit" class="btn btn-primary">確定</button>
                             <button type="button" class="btn btn-light dismiss">取消</button>
