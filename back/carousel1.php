@@ -54,7 +54,7 @@
                 <img src="../upload/<?= $row["thumb"] ?>" style="width:500px;">
             </div>
             <div class="content btns">
-                <button class="btn btn-primary editBtn" data-bs-id="<?= $row["id"] ?>">編輯</button>
+                <button class="btn btn-primary editBtn" data-bs-id="<?= $row["id"] ?>" data-bs-text="<?= $row["text"] ?>">編輯</button>
                 <button class="btn btn-danger">刪除</button>
             </div>       
         </div> 
@@ -70,7 +70,8 @@
 
                 <div class="modal-body">
                     <form active="../api/carousel1.php">
-                        <input type="text" class="id" name="id" value="">
+                        <input type="text" id="modalId" name="id" value="">
+                        <input type="text" id="modalText" name="text" value="">
                         <button type="submit" class="btn btn-primary">確定</button>
                         <button type="button" class="btn btn-light dismiss">取消</button>
                     </form>
@@ -84,26 +85,22 @@
 <script>
     $(document).ready(function()
     {
-
-        const dismiss = $(".dismiss")
-        const id = $(".id")
+        const editBtn = $(".editBtn");
+        const dismiss = $(".dismiss");
+        const editModal = $(".editModal");
+        const id = $("#modalId");
+        const text = $("#modalText");
         console.log("dismiss", dismiss);
         console.log("id", id);
-
-        const edits = {};
-        const modals = {};
-        const count = $(".editBtn").length;
-        for(let i = 0; i <= count; i++)
+        
+        editBtn.click(function()
         {
-            edits[`edit${i}`] = $(`#editBtn${i}`);
-            modals[`modal${i}`] = $(`#editModal${i}`);
-            edits[`edit${i}`].click(function()
-            {
-                modals[`modal${i}`].show();
-                let thisId = edits[`edit${i}`].attr("data-bs-id");
-                id.attr("value", thisId);
-            });
-        }
+            editModal.show();
+            let thisId = $(this).attr("data-bs-id");
+            let thisText = $(this).attr("data-bs-text");
+            id.attr("value", thisId);
+            text.attr("value", thisText);
+        });
 
         dismiss.click(function()
         {
