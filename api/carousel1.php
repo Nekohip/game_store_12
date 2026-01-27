@@ -13,11 +13,9 @@ if(!empty($_FILES))
 
 $_POST["sh"] = isset($_POST["sh"]) ? 1 : 0;
 
+// 檢查用
+// $sql = $Carousel1->update($_POST);
+// echo $sql;
 $Carousel1->update($_POST);
-
-header("location:../back.php?do=carousel1")
+header("location:../back.php?do=carousel1");
 ?>
-<pre>
-    <?php print_r($_POST) ?>
-</pre>
-<!-- $Carousel1->update($_POST); -->

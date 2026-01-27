@@ -53,12 +53,14 @@
             <div class="content">
                 縮圖:<img src="../upload/<?= $row["thumb"] ?>" style="width:500px;">
             </div>
+            <div class="content"><?= $row["sh"] == 1 ? "顯示中✓" : ""?></div>
             <div class="content btns">
                 <button class="btn btn-primary editBtn" 
                         data-bs-id="<?= $row["id"] ?>"
                         data-bs-text="<?= $row["text"] ?>"
                         data-bs-img="<?= $row["img"] ?>"
-                        data-bs-thumb="<?= $row["thumb"] ?>">
+                        data-bs-thumb="<?= $row["thumb"] ?>"
+                        data-bs-sh="<?= $row["sh"] ?>">
                     編輯
                 </button>
 
@@ -89,10 +91,8 @@
                         <input type="file" id="modalThumb" name="thumb" value=""><br>
 
                         <label for="modalThumb" class="modal-text">顯示:</label>
-                        <input type="checkbox" id = "modalThumb" name="sh" 
-                               style="width:21px; height:21px"
-                               value=<?= $row["id"] ?>
-                               <?= $row["sh"] == 1 ? "checked" : ""?>><br>
+                        <input type="checkbox" id="modalSh" name="sh" 
+                               style="width:21px; height:21px" value=""><br>
 
                         <input type="submit" class="btn btn-primary" value="確定"></button>
                         <button type="button" class="btn btn-light dismiss">取消</button>
@@ -110,13 +110,12 @@
         const editBtn = $(".editBtn");
         const dismiss = $(".dismiss");
         const editModal = $(".editModal");
+
         const id = $("#modalId");
         const text = $("#modalText");
         const img = $("#modalImg");
         const thumb = $("#modalThumb");
-
-        console.log("img", img);
-        console.log("thumb", thumb);
+        const sh = $("#modalSh");
         
         editBtn.click(function()
         {
@@ -125,11 +124,20 @@
             let thisText = $(this).attr("data-bs-text");
             let thisImg = $(this).attr("data-bs-img");
             let thisThumb = $(this).attr("data-bs-thumb");
+            let thisSh = $(this).attr("data-bs-sh");
 
             id.attr("value", thisId);
             text.attr("value", thisText);
             img.attr("value",thisImg);
             thumb.attr("value",thisThumb);
+            if(thisSh==1)
+            {
+                sh.prop("checked", true);
+            }
+            else
+            {
+                sh.prop("checked", false);
+            }
         });
 
         dismiss.click(function()

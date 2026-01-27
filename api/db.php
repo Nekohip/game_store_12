@@ -19,18 +19,36 @@ Class DB
         return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function update($row)
+    public function array_to_sql($rows)
     {
-        $sql = "UPDATE `$this->table` 
-                SET 
-                    `text` = '{$row['text']}',
-                    `img` = '{$row['img']}',
-                    `thumb` = '{$row['thumb']}',
-                    `sh` = '{$row['sh']}'
-                WHERE
-                    `id` = {$row['id']}";
+        if(empty($rows["img"]))
+        {
+            unset($rows["img"]);
+        }
 
+        if(empty($rows["thumb"]))
+        {
+            unset($rows["thumb"]);
+        }
+
+        foreach($rows as $key => $value)
+        {
+            $tmp[]="`$key`='$value'";
+        }
+        
+        return $tmp;
+    }
+
+    public function update($rows)
+    {
+        $sql = "UPDATE `$this->table` SET ";
+        $tmp = $this->array_to_sql($rows);
+        $sql .= join(", ", $tmp) . " WHERE `id` = {$rows['id']}";
+        
+        // 檢查用
+        // return $sql;
         return $this->pdo->exec($sql);
+
     }
 }
 
