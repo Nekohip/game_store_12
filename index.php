@@ -193,7 +193,7 @@ $rows = $Carousel->all();
     <div class="carousel-indicators">
     <?php foreach($rows as $row): ?>
         <?php if($row["sh"] == 1): ?>
-        <button type="button" data-bs-target="#carousel" data-bs-slide-to="<?= $row["id"]-1; ?>" class="active" id="img-btn">
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="<?= $row["id"]-1; ?>" class="<?= $row["id"] == 0 ? 'active' :'' ?>" id="img-btn">
             <img src="./upload/<?= $row["thumb"]; ?>" class="d-block w-100" alt="thumbnail">
         </button>
         <?php endif; ?>
