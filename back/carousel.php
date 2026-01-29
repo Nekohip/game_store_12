@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>set_carousel1_img</title>
+    <title>set_carousel_img</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.bundle.min.js"
             integrity="sha512-HvOjJrdwNpDbkGJIG2ZNqDlVqMo77qbs4Me4cah0HoDrfhrbA+8SBlZn1KrvAQw7cILLPFJvdwIgphzQmMm+Pw=="
@@ -40,9 +40,9 @@
 <body>
 <?php
     include "./api/db.php";
-    $rows = $Carousel1->all();
+    $rows = $Carousel->all();
 ?>
-    <h4>Carousel 1</h4>
+    <h4>Carousel</h4>
     <div class="row">
         <?php foreach($rows as $row): ?>
         <div class="col-6">
@@ -78,7 +78,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="../api/carousel1.php" method="post" enctype="multipart/form-data">
+                    <form action="../api/carousel.php" method="post" enctype="multipart/form-data">
                         <input type="hidden" id="modalId" name="id" value="" >
 
                         <label for="modalText" class="modal-text">標題:</label>

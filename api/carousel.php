@@ -1,6 +1,6 @@
 <?php
 include "../api/db.php";
-$rows = $Carousel1->all();
+$rows = $Carousel->all();
 
 if(!empty($_FILES))
 {
@@ -14,8 +14,8 @@ if(!empty($_FILES))
 $_POST["sh"] = isset($_POST["sh"]) ? 1 : 0;
 
 // 檢查用
-// $sql = $Carousel1->update($_POST);
+// $sql = $Carousel->update($_POST);
 // echo $sql;
-$Carousel1->update($_POST);
-header("location:../back.php?do=carousel1");
+$Carousel->update($_POST);
+header("location:../back.php?do=carousel");
 ?>

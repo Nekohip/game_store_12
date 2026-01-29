@@ -52,5 +52,5 @@ Class DB
     }
 }
 
-$Carousel1 = new DB("carousel1");
+$Carousel = new DB("carousel");
 ?>
