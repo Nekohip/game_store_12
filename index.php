@@ -185,25 +185,32 @@ include "./api/db.php";
 </nav>
 <?php
 $rows = $Carousel->all();
-foreach($rows as $row):
 ?>
 <!-- carousel start -->
 <div id="carousel" class="carousel slide" data-bs-ride="carousel">
     <!-- 指示物 -->
     <!-- Indicators/dots -->
     <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" id="img-btn">
+    <?php foreach($rows as $row): ?>
+        <?php if($row["sh"] == 1): ?>
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="<?= $row["id"]-1; ?>" class="active" id="img-btn">
             <img src="./upload/<?= $row["thumb"]; ?>" class="d-block w-100" alt="thumbnail">
         </button>
+        <?php endif; ?>
+    <?php endforeach; ?>
     </div>
+
     <!-- 內容 -->
     <!-- The slideshow/carousel -->
     <div class="carousel-inner">
+    <?php foreach($rows as $row): ?>
+        <?php if($row["sh"] == 1): ?>
         <div class="carousel-item active">
-            <img src="./upload/<?= $row["img"]; ?>" alt="1" class="d-block" style="width:100%">
+            <img src="./upload/<?= $row["img"]; ?>" alt="img" class="d-block" style="width:100%">
         </div>
+        <?php endif; ?>
+    <?php endforeach; ?>
     </div>
-<?php endforeach; ?>
     
     <!-- 左右箭頭 -->
     <!-- Left and right controls/icons -->
