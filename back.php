@@ -46,7 +46,7 @@
         .center {
             /* background-color: green; */
             border: 1px black solid;
-            /* height: 120vh; */
+            /* height: 160vh; */
             width: 65%;
             margin-top: 280px;
             margin-left: 560px;

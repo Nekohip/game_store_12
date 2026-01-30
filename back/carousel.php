@@ -42,7 +42,10 @@
     include "./api/db.php";
     $rows = $Carousel->all();
 ?>
-    <h4>Carousel</h4>
+    <div class="d-flex justify-content-between editBtn">
+        <h4>Carousel</h4>
+        <button class="btn btn-primary ">新增+</button>
+    </div>
     <div class="row">
         <?php foreach($rows as $row): ?>
         <div class="col-6">

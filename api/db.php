@@ -19,19 +19,19 @@ Class DB
         return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function array_to_sql($rows)
+    public function array_to_sql($row)
     {
-        if(empty($rows["img"]))
+        if(empty($row["img"]))
         {
-            unset($rows["img"]);
+            unset($row["img"]);
         }
 
-        if(empty($rows["thumb"]))
+        if(empty($row["thumb"]))
         {
-            unset($rows["thumb"]);
+            unset($row["thumb"]);
         }
 
-        foreach($rows as $key => $value)
+        foreach($row as $key => $value)
         {
             $tmp[]="`$key`='$value'";
         }
@@ -39,12 +39,23 @@ Class DB
         return $tmp;
     }
 
-    public function update($rows)
+    public function update($row)
     {
         $sql = "UPDATE `$this->table` SET ";
-        $tmp = $this->array_to_sql($rows);
-        $sql .= join(", ", $tmp) . " WHERE `id` = {$rows['id']}";
+        $tmp = $this->array_to_sql($row);
+        $sql .= join(", ", $tmp) . " WHERE `id` = {$row['id']}";
         
+        // 檢查用
+        // return $sql;
+        return $this->pdo->exec($sql);
+
+    }
+
+    public function insert($row)
+    {
+        $sql = "INSERT INTO `$this->table` (`";
+        $keys = array_keys($row);
+        $sql .= join("`, `", $keys) . "`) VALUES ('" . join("', '", $row) . "')";
         // 檢查用
         // return $sql;
         return $this->pdo->exec($sql);

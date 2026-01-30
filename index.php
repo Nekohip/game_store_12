@@ -185,6 +185,16 @@ include "./api/db.php";
 </nav>
 <?php
 $rows = $Carousel->all();
+$sh1Ids = [];
+foreach($rows as $row)
+{
+    if($row["sh"] == 1)
+    {
+        $sh1Ids[] = $row["id"];
+    }
+}
+
+$slideTo = 0;
 ?>
 <!-- carousel start -->
 <div id="carousel" class="carousel slide" data-bs-ride="carousel">
@@ -193,10 +203,14 @@ $rows = $Carousel->all();
     <div class="carousel-indicators">
     <?php foreach($rows as $row): ?>
         <?php if($row["sh"] == 1): ?>
-        <button type="button" data-bs-target="#carousel" data-bs-slide-to="<?= $row["id"]-1; ?>" class="<?= $row["id"] == 1 ? 'active' : ''; ?>" id="img-btn">
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to=<?= (string)$slideTo ?>
+        class="<?= $row["id"] == min($sh1Ids) ? 'active' : ''; ?>" id="img-btn">
             <img src="./upload/<?= $row["thumb"]; ?>" class="d-block w-100" alt="thumbnail">
         </button>
-        <?php endif; ?>
+        <?php
+        $slideTo++; 
+        endif; 
+        ?>
     <?php endforeach; ?>
     </div>
 
@@ -205,7 +219,7 @@ $rows = $Carousel->all();
     <div class="carousel-inner">
     <?php foreach($rows as $row): ?>
         <?php if($row["sh"] == 1): ?>
-        <div class="carousel-item <?= $row["id"] == 1 ? 'active' : ''; ?>">
+        <div class="carousel-item <?= $row["id"] == min($sh1Ids) ? 'active' : ''; ?>">
             <img src="./upload/<?= $row["img"]; ?>" alt="img" class="d-block" style="width:100%">
         </div>
         <?php endif; ?>
