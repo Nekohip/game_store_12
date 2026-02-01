@@ -61,6 +61,12 @@ Class DB
         return $this->pdo->exec($sql);
 
     }
+
+    public function del($row)
+    {
+        $sql = "DELETE FROM `$this->table` WHERE `id` = {$row['id']}";
+        return $this->pdo->exec($sql);
+    }
 }
 
 $Carousel = new DB("carousel");

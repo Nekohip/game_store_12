@@ -42,9 +42,9 @@
     include "./api/db.php";
     $rows = $Carousel->all();
 ?>
-    <div class="d-flex justify-content-between editBtn">
+    <div class="d-flex justify-content-between">
         <h4>Carousel</h4>
-        <button class="btn btn-primary ">新增+</button>
+        <button class="btn btn-primary editBtn">新增+</button>
     </div>
     <div class="row">
         <?php foreach($rows as $row): ?>
@@ -67,7 +67,11 @@
                     編輯
                 </button>
 
-                <button class="btn btn-danger">刪除</button>
+                <button class="btn btn-danger delBtn"
+                        data-bs-id="<?= $row["id"] ?>"
+                        data-bs-text="<?= $row["text"] ?>">
+                    刪除
+                </button>
             </div>       
         </div> 
         <?php endforeach ?>
@@ -81,7 +85,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="../api/carousel.php" method="post" enctype="multipart/form-data">
+                    <form action="../api/edit.php" method="post" enctype="multipart/form-data">
                         <input type="hidden" id="modalId" name="id" value="" >
 
                         <label for="modalText" class="modal-text">標題:</label>
@@ -97,8 +101,33 @@
                         <input type="checkbox" id="modalSh" name="sh" 
                                style="width:21px; height:21px" value=""><br>
 
+
+
                         <input type="submit" class="btn btn-primary" value="確定"></button>
                         <button type="button" class="btn btn-light dismiss">取消</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal delModal">
+        <div class="modal-dialog">
+            <!-- modal區塊 -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">刪除</h3>
+                </div>
+
+                <div class="modal-body">
+                    <form action="../api/del.php" method="post" enctype="multipart/form-data">
+                        <input type="hidden" id="delId" name="id" value="">
+
+                        <label for="delModalText" class="modal-text">確定要刪除</label>
+                        <input type="text" id="delText" name="text" value="" readonly>？<br>
+                        
+                        <input type="submit" class="btn btn-primary" value="確定"></button>
+                        <button type="button" class="btn btn-light delDismiss">取消</button>
                     </form>
                 </div>
             </div>
@@ -110,6 +139,7 @@
 <script>
     $(document).ready(function()
     {
+        //編輯按鈕
         const editBtn = $(".editBtn");
         const dismiss = $(".dismiss");
         const editModal = $(".editModal");
@@ -133,7 +163,8 @@
             text.attr("value", thisText);
             img.attr("value",thisImg);
             thumb.attr("value",thisThumb);
-            if(thisSh==1)
+
+            if(thisSh == 1)
             {
                 sh.prop("checked", true);
             }
@@ -146,6 +177,28 @@
         dismiss.click(function()
         {
             editModal.hide();
+        });
+
+        //刪除按鈕
+        const delModal = $(".delModal");
+        const delBtn = $(".delBtn");
+        const delDismiss = $(".delDismiss");
+        const delId = $("#delId");
+        const delText = $("#delText");
+
+        delBtn.click(function()
+        {
+            delModal.show();
+            let thisId = $(this).attr("data-bs-id");
+            let thisText = $(this).attr("data-bs-text");
+
+            delId.attr("value", thisId);
+            delText.attr("value", thisText);
+        });
+
+        delDismiss.click(function()
+        {
+            delModal.hide();
         });
     });
 </script>
