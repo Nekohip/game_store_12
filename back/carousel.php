@@ -27,13 +27,23 @@
 
         .btns {
             float: right;
-            width: 32%;
+            width: 26%;
         }
 
         .modal-text {
             font-size: 20px;
             font-weight: bold;
             margin-top: 15px;
+        }
+
+        .cards {
+            border: 1px black solid;
+            margin: 32px 1px 0px 227px;
+        }
+
+        .title{
+            width: 32%;
+            margin: auto;
         }
     </style>
 </head>
@@ -42,13 +52,13 @@
     include "./api/db.php";
     $rows = $Carousel->all();
 ?>
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-around title">
         <h4>Carousel</h4>
         <button class="btn btn-primary editBtn">新增+</button>
     </div>
     <div class="row">
         <?php foreach($rows as $row): ?>
-        <div class="col-6">
+        <div class="col-6 cards">
             <div class="content">標題:<?= $row["text"] ?></div>
             <div class="content">
                 圖片:<img src="../upload/<?= $row["img"] ?>" style="width:500px;">
@@ -62,8 +72,7 @@
                         data-bs-id="<?= $row["id"] ?>"
                         data-bs-text="<?= $row["text"] ?>"
                         data-bs-img="<?= $row["img"] ?>"
-                        data-bs-thumb="<?= $row["thumb"] ?>"
-                        data-bs-sh="<?= $row["sh"] ?>">
+                        data-bs-thumb="<?= $row["thumb"] ?>">
                     編輯
                 </button>
 
@@ -99,12 +108,11 @@
 
                         <label for="modalThumb" class="modal-text">顯示:</label>
                         <input type="checkbox" id="modalSh" name="sh" 
-                               style="width:21px; height:21px" value=""><br>
-
-
-
-                        <input type="submit" class="btn btn-primary" value="確定"></button>
-                        <button type="button" class="btn btn-light dismiss">取消</button>
+                               style="width:21px; height:21px" value="" checked><br>
+                        <div class="content btns">
+                            <button type="button" class="btn btn-light dismiss">取消</button>
+                            <input type="submit" class="btn btn-primary" value="確定"></button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -125,9 +133,10 @@
 
                         <label for="delModalText" class="modal-text">確定要刪除</label>
                         <input type="text" id="delText" name="text" value="" readonly>？<br>
-                        
-                        <input type="submit" class="btn btn-primary" value="確定"></button>
-                        <button type="button" class="btn btn-light delDismiss">取消</button>
+                        <div class="content btns">
+                            <input type="submit" class="btn btn-danger" value="確定"></button>
+                            <button type="button" class="btn btn-light delDismiss">取消</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -157,21 +166,11 @@
             let thisText = $(this).attr("data-bs-text");
             let thisImg = $(this).attr("data-bs-img");
             let thisThumb = $(this).attr("data-bs-thumb");
-            let thisSh = $(this).attr("data-bs-sh");
 
             id.attr("value", thisId);
             text.attr("value", thisText);
             img.attr("value",thisImg);
             thumb.attr("value",thisThumb);
-
-            if(thisSh == 1)
-            {
-                sh.prop("checked", true);
-            }
-            else
-            {
-                sh.prop("checked", false);
-            }
         });
 
         dismiss.click(function()
