@@ -230,11 +230,11 @@ $slideTo = 0;
     <!-- Left and right controls/icons -->
     <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
         <!-- <span class="carousel-control-prev-icon"></span> -->
-        <img src="./img/arrow-l.png" alt="5" class="d-block" style="width:30%">
+        <img src="./img/arrow-l.png" alt="arrow" class="d-block" style="width:30%">
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
         <!-- <span class="carousel-control-next-icon"></span> -->
-         <img src="./img/arrow-r.png" alt="5" class="d-block" style="width:30%">
+         <img src="./img/arrow-r.png" alt="arrow" class="d-block" style="width:30%">
     </button>
 </div>
 <!-- carousel end -->
