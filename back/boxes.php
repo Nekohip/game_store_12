@@ -68,7 +68,7 @@
                 <button class="btn btn-primary editBtn" 
                         data-bs-id="<?= $row["id"] ?>"
                         data-bs-text="<?= $row["text"] ?>"
-                        data-bs-img="<?= $row["img"] ?>"
+                        data-bs-img="<?= $row["img"] ?>">
                     編輯
                 </button>
 
@@ -90,7 +90,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="../api/edit.php" method="post" enctype="multipart/form-data">
+                    <form action="../api/edit.php?do=boxes" method="post" enctype="multipart/form-data">
                         <input type="hidden" id="modalId" name="id" value="" >
 
                         <label for="modalText" class="modal-text">標題:</label>
@@ -122,7 +122,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="../api/del.php" method="post" enctype="multipart/form-data">
+                    <form action="../api/del.php?do=boxes" method="post" enctype="multipart/form-data">
                         <input type="hidden" id="delId" name="id" value="">
 
                         <label for="delModalText" class="modal-text">確定要刪除</label>

@@ -4,26 +4,53 @@ $rows = $Carousel->all();
 
 if(!empty($_FILES))
 {
-    move_uploaded_file($_FILES["img"]["tmp_name"], "../upload/".$_FILES["img"]["name"]);
-    $_POST["img"] = $_FILES["img"]["name"];
-
-    move_uploaded_file($_FILES["thumb"]["tmp_name"], "../upload/".$_FILES["thumb"]["name"]);
-    $_POST["thumb"]  = $_FILES["thumb"]["name"];
+    if(!empty($_FILES["img"]))
+    {
+        move_uploaded_file($_FILES["img"]["tmp_name"], "../upload/".$_FILES["img"]["name"]);
+        $_POST["img"] = $_FILES["img"]["name"];
+    }
+        
+    if(!empty($_FILES["thumb"]))
+    {
+        move_uploaded_file($_FILES["thumb"]["tmp_name"], "../upload/".$_FILES["thumb"]["name"]);
+        $_POST["thumb"]  = $_FILES["thumb"]["name"];
+    }    
 }
 
 $_POST["sh"] = isset($_POST["sh"]) ? 1 : 0;
 
-if(!empty($_POST["id"]))
+if($_GET["do"] == "carousel")
 {
-    $Carousel->update($_POST);
+    if(!empty($_POST["id"]))
+    {
+        $Carousel->update($_POST);
+        //檢查用
+        // $sql = $Carousel->update($_POST);
+        // echo $sql;
+    }
+    else
+    {
+        $Carousel->insert($_POST);
+        // $sql = $Carousel->insert($_POST);
+        // echo $sql;
+    }   
+    header("location:../back.php?do=carousel");
 }
-else
+
+if($_GET["do"] == "boxes")
 {
-    $Carousel->insert($_POST);
-}   
-// 檢查用
-// $sql = $Carousel->update($_POST);
-// $sql = $Carousel->insert($_POST);
-// echo $sql;
-header("location:../back.php?do=carousel");
+    if(!empty($_POST["id"]))
+    {
+        $Boxes->update($_POST);
+        // $sql = $Boxes->update($_POST);
+        // echo $sql;
+    }
+    else
+    {
+        $Boxes->insert($_POST);
+        // $sql = $Boxes->insert($_POST);
+        // echo $sql;
+    }
+    header("location:../back.php?do=boxes");
+}
 ?>

@@ -94,7 +94,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="../api/edit.php" method="post" enctype="multipart/form-data">
+                    <form action="../api/edit.php?do=carousel" method="post" enctype="multipart/form-data">
                         <input type="hidden" id="modalId" name="id" value="" >
 
                         <label for="modalText" class="modal-text">標題:</label>
@@ -128,7 +128,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="../api/del.php" method="post" enctype="multipart/form-data">
+                    <form action="../api/del.php?do=carousel" method="post" enctype="multipart/form-data">
                         <input type="hidden" id="delId" name="id" value="">
 
                         <label for="delModalText" class="modal-text">確定要刪除</label>

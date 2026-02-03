@@ -80,10 +80,6 @@
         transform: scale(1.05);
     }
     
-    #col {
-        width:300px;
-    }
-    
     .row {
         width: 80%;
         display: flex;
@@ -238,65 +234,30 @@ $slideTo = 0;
     </button>
 </div>
 <!-- carousel end -->
+
+<!-- boxes start -->
+<?php
+
+?>
+
 <div class="container-fluid" id="container1">
     <div class="text"><span>現已推出的精彩PS4和PS5遊戲</span></div>
-    <!-- row1 start -->
+    <!-- row start -->
     <div class="row">
-        <div class="col-lg-3 col-sm-6" id="col">
-            <div class="box1">
-                <img class="img-fluid " src="./img/game1.png">
-            </div>
-            <div class="text-name"><span>LET IT DIE: INFERNO</span></div>
-        </div>
-        <div class="col-lg-3 col-sm-6" id="col">
-            <div class="box1">
-                <img class="img-fluid" src="./img/game2.png">
-            </div>
-            <div class="text-name"><span>勇者鬥惡龍I & II HD-2D Remake</span></div>
-        </div>
-        <div class="col-lg-3 col-sm-6" id="col">
-            <div class="box1">
-                <img class="img-fluid" src="./img/game3.png">
-            </div>
-            <div class="text-name"><span>無盡傳奇 Remastered</span></div>
-        </div>
-        <div class="col-lg-3 col-sm-6" id="col">
-            <div class="box1">
-                <img class="img-fluid" src="./img/game4.png">
-            </div>
-            <div class="text-name"><span>從前從前有個塊魂</span></div>
-        </div>
+        <?php $rows = $Boxes->all();?>
+        <?php foreach($rows as $row): ?>
+            <?php if($row["sh"] == 1): ?>
+                <div class="col-2">
+                    <div class="box1">
+                        <img class="img-fluid " src="./img/<?= $row['img'] ?>">
+                    </div>
+                    <div class="text-name"><span><?= $row['text']  ?></span></div>
+                </div>
+            <?php endif ?>
+        <?php endforeach ?>
     </div>
-    <!-- row1 end -->
-    <!-- row2 start -->
-    <div class="row">
-        <div class="col-lg-3 col-sm-6" id="col">
-            <div class="box2">
-                <img class="img-fluid" src="./img/game5.png">
-            </div>
-            <div class="text-name"><span>數碼寶貝物語 時空異客</span></div>
-        </div>
-        <div class="col-lg-3 col-sm-6" id="col">
-            <div class="box2">
-                <img class="img-fluid" src="./img/game6.png">
-            </div>
-            <div class="text-name"><span>緋夜傳奇 Remastered</span></div>
-        </div>
-        <div class="col-lg-3 col-sm-6" id="col">
-            <div class="box2">
-                <img class="img-fluid" src="./img/game7.png">
-            </div>
-            <div class="text-name"><span>羊蹄山戰鬼</span></div>
-        </div>
-        <div class="col-lg-3 col-sm-6" id="col">
-            <div class="box2">
-                <img class="img-fluid" src="./img/game8.png">
-            </div>
-            <div class="text-name"><span>DEATH STRANDING 2: ON THE BEACH</span></div>
-        </div>
-    </div>
-</div>
-<!-- row2 end -->
+    <!-- row end -->
+<!-- boxes end -->
 </body>
 
 </html>
