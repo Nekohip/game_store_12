@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>set_carousel_img</title>
+    <title>set_box_img</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.bundle.min.js"
             integrity="sha512-HvOjJrdwNpDbkGJIG2ZNqDlVqMo77qbs4Me4cah0HoDrfhrbA+8SBlZn1KrvAQw7cILLPFJvdwIgphzQmMm+Pw=="
@@ -50,10 +50,10 @@
 <body>
 <?php
     include "./api/db.php";
-    $rows = $Carousel->all();
+    $rows = $Boxes->all();
 ?>
     <div class="d-flex justify-content-around title">
-        <h4>Carousel</h4>
+        <h4>Boxes</h4>
         <button class="btn btn-primary editBtn">新增+</button>
     </div>
     <div class="row">
@@ -63,16 +63,12 @@
             <div class="content">
                 圖片:<img src="../upload/<?= $row["img"] ?>" style="width:500px;">
             </div>
-            <div class="content">
-                縮圖:<img src="../upload/<?= $row["thumb"] ?>" style="width:500px;">
-            </div>
             <div class="content"><?= $row["sh"] == 1 ? "顯示中✓" : ""?></div>
             <div class="content btns">
                 <button class="btn btn-primary editBtn" 
                         data-bs-id="<?= $row["id"] ?>"
                         data-bs-text="<?= $row["text"] ?>"
                         data-bs-img="<?= $row["img"] ?>"
-                        data-bs-thumb="<?= $row["thumb"] ?>">
                     編輯
                 </button>
 
@@ -103,12 +99,10 @@
                         <label for="modalImg" class="modal-text">上傳圖片:</label>
                         <input type="file" id="modalImg" name="img" value=""><br>
 
-                        <label for="modalThumb" class="modal-text">上傳縮圖:</label>
-                        <input type="file" id="modalThumb" name="thumb" value=""><br>
-
                         <label for="modalSh" class="modal-text">顯示:</label>
                         <input type="checkbox" id="modalSh" name="sh" 
                                style="width:21px; height:21px" value="" checked><br>
+
                         <div class="content btns">
                             <button type="button" class="btn btn-light dismiss">取消</button>
                             <input type="submit" class="btn btn-primary" value="確定"></button>
@@ -156,7 +150,6 @@
         const id = $("#modalId");
         const text = $("#modalText");
         const img = $("#modalImg");
-        const thumb = $("#modalThumb");
         const sh = $("#modalSh");
         
         editBtn.click(function()
@@ -165,12 +158,10 @@
             let thisId = $(this).attr("data-bs-id");
             let thisText = $(this).attr("data-bs-text");
             let thisImg = $(this).attr("data-bs-img");
-            let thisThumb = $(this).attr("data-bs-thumb");
 
             id.attr("value", thisId);
             text.attr("value", thisText);
             img.attr("value",thisImg);
-            thumb.attr("value",thisThumb);
         });
 
         dismiss.click(function()

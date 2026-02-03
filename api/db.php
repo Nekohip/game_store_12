@@ -70,4 +70,5 @@ Class DB
 }
 
 $Carousel = new DB("carousel");
+$Boxes = new DB("boxes");
 ?>

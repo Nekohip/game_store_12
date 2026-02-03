@@ -72,8 +72,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="btn btn-outline-primary w-100">
-                        AAA
+                    <a href="?do=boxes" class="btn btn-outline-primary w-100">
+                        Boxes
                     </a>
                 </li>
                 <li class="nav-item">
@@ -93,6 +93,9 @@
                         {
                             case "carousel" :
                                 include "./back/carousel.php";
+                                break;
+                            case "boxes" :
+                                include "./back/boxes.php";
                                 break;
                         }
                     }
