@@ -77,8 +77,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="btn btn-outline-primary w-100">
-                        BBB
+                    <a href="?do=nav" class="btn btn-outline-primary w-100">
+                        Nav
                     </a>
                 </li>
             </ul>
@@ -86,24 +86,27 @@
         </div>
 
         <div class="container center">
-                <?php
-                    if(isset($_GET["do"]))
+            <?php
+                if(isset($_GET["do"]))
+                {
+                    switch($_GET["do"])
                     {
-                        switch($_GET["do"])
-                        {
-                            case "carousel" :
-                                include "./back/carousel.php";
-                                break;
-                            case "boxes" :
-                                include "./back/boxes.php";
-                                break;
-                        }
+                        case "carousel" :
+                            include "./back/carousel.php";
+                            break;
+                        case "boxes" :
+                            include "./back/boxes.php";
+                            break;
+                        case "nav" :
+                            include "./back/nav.php";
+                            break;
                     }
-                    else
-                    {
-                        include "./back/white.php";
-                    }
-                ?>
+                }
+                else
+                {
+                    include "./back/white.php";
+                }
+            ?>
         </div>
 
     </div>

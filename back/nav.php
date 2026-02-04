@@ -50,7 +50,7 @@
 <body>
 <?php
     include "./api/db.php";
-    $rows = $Boxes->all();
+    $rows = $Nav->all();
 ?>
     <div class="d-flex justify-content-around title">
         <h4>Boxes</h4>
@@ -59,25 +59,23 @@
     <div class="row">
         <?php foreach($rows as $row): ?>
         <div class="col-6 cards">
-            <div class="content">標題:<?= $row["text"] ?></div>
-            <div class="content">
-                圖片:<img src="../upload/<?= $row["img"] ?>" style="width:500px;">
-            </div>
-            <div class="content"><?= $row["sh"] == 1 ? "顯示中✓" : ""?></div>
-            <div class="content btns">
-                <button class="btn btn-primary editBtn" 
-                        data-bs-id="<?= $row["id"] ?>"
-                        data-bs-text="<?= $row["text"] ?>"
-                        data-bs-img="<?= $row["img"] ?>">
-                    編輯
-                </button>
+            <form method="post" action="../api/edit.php">
+                <lable class="content">主選單:</lable>
+                <input type="text" name="text" value="<?= $row["text"] ?>">
 
-                <button class="btn btn-danger delBtn"
-                        data-bs-id="<?= $row["id"] ?>"
-                        data-bs-text="<?= $row["text"] ?>">
-                    刪除
-                </button>
-            </div>       
+                <label for="modalSh" class="modal-text">顯示:</label>
+                <input type="checkbox" id="modalSh" name="sh" 
+                       style="width:21px; height:21px" value="" <?= $row["sh"] == 1 ? "checked" : ""?>><br>
+
+                <div class="content btns">
+                    <input type="submit" value="編輯" class="btn btn-primary"></button>
+                    <button class="btn btn-danger delBtn"
+                            data-bs-id="<?= $row["id"] ?>"
+                            data-bs-text="<?= $row["text"] ?>">
+                        刪除
+                    </button>
+                </div>
+            </form>    
         </div> 
         <?php endforeach ?>
     </div>
@@ -93,11 +91,8 @@
                     <form action="../api/edit.php?do=boxes" method="post" enctype="multipart/form-data">
                         <input type="hidden" id="modalId" name="id" value="" >
 
-                        <label for="modalText" class="modal-text">標題:</label>
+                        <label for="modalText" class="modal-text">主選單:</label>
                         <input type="text" id="modalText" name="text" value=""><br>
-
-                        <label for="modalImg" class="modal-text">上傳圖片:</label>
-                        <input type="file" id="modalImg" name="img" value=""><br>
 
                         <label for="modalSh" class="modal-text">顯示:</label>
                         <input type="checkbox" id="modalSh" name="sh" 
@@ -148,19 +143,11 @@
 
         const id = $("#modalId");
         const text = $("#modalText");
-        const img = $("#modalImg");
         const sh = $("#modalSh");
         
         editBtn.click(function()
         {
             editModal.show();
-            let thisId = $(this).attr("data-bs-id");
-            let thisText = $(this).attr("data-bs-text");
-            let thisImg = $(this).attr("data-bs-img");
-
-            id.attr("value", thisId);
-            text.attr("value", thisText);
-            img.attr("value",thisImg);
         });
 
         dismiss.click(function()
