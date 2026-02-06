@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>set_box_img</title>
+    <title>set_nav</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.bundle.min.js"
             integrity="sha512-HvOjJrdwNpDbkGJIG2ZNqDlVqMo77qbs4Me4cah0HoDrfhrbA+8SBlZn1KrvAQw7cILLPFJvdwIgphzQmMm+Pw=="
@@ -53,7 +53,7 @@
     $rows = $Nav->all();
 ?>
     <div class="d-flex justify-content-around title">
-        <h4>Boxes</h4>
+        <h4>Nav</h4>
         <button class="btn btn-primary editBtn">新增+</button>
     </div>
     <div class="row">
