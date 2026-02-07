@@ -57,26 +57,26 @@
         <button class="btn btn-primary editBtn">新增+</button>
     </div>
     <div class="row">
-        <?php foreach($rows as $row): ?>
-        <div class="col-6 cards">
-            <form method="post" action="../api/edit.php">
-                <lable class="content">主選單:</lable>
-                <input type="text" name="text" value="<?= $row["text"] ?>">
+        <?php foreach($rows as $row_main): ?>
+            <?php if($row_main["main_id"] == 0):?>
+                <div class="col-6 cards">
+                    <lable class="content">主選單:</lable>
+                    <input type="text" name="text" value="<?= $row_main["text"] ?>">
 
-                <label for="modalSh" class="modal-text">顯示:</label>
-                <input type="checkbox" id="modalSh" name="sh" 
-                       style="width:21px; height:21px" value="" <?= $row["sh"] == 1 ? "checked" : ""?>><br>
+                    <label for="modalSh" class="modal-text">顯示:</label>
+                    <input type="checkbox" id="modalSh" name="sh" 
+                           style="width:21px; height:21px" value="" <?= $row_main["sh"] == 1 ? "checked" : ""?>><br>
 
-                <div class="content btns">
-                    <input type="submit" value="編輯" class="btn btn-primary"></button>
-                    <button class="btn btn-danger delBtn"
-                            data-bs-id="<?= $row["id"] ?>"
-                            data-bs-text="<?= $row["text"] ?>">
-                        刪除
-                    </button>
-                </div>
-            </form>    
-        </div> 
+                    <div class="content btns">
+                        <input type="submit" value="編輯" class="btn btn-primary editBtn"></button>
+                        <button class="btn btn-danger delBtn"
+                                data-bs-id="<?= $row_main["id"] ?>"
+                                data-bs-text="<?= $row_main["text"] ?>">
+                            刪除
+                        </button>
+                    </div>  
+                </div> 
+            <?php endif ?>
         <?php endforeach ?>
     </div>
     <div class="modal editModal">
