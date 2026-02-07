@@ -60,13 +60,17 @@
         <?php foreach($rows as $row): ?>
         <div class="col-6 cards">
             <div class="content">標題:<?= $row["text"] ?></div>
+            
             <div class="content">
                 圖片:<img src="../upload/<?= $row["img"] ?>" style="width:500px;">
             </div>
+
             <div class="content">
                 縮圖:<img src="../upload/<?= $row["thumb"] ?>" style="width:500px;">
             </div>
+            
             <div class="content"><?= $row["sh"] == 1 ? "顯示中✓" : ""?></div>
+
             <div class="content btns">
                 <button class="btn btn-primary editBtn" 
                         data-bs-id="<?= $row["id"] ?>"

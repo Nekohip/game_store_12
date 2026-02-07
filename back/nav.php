@@ -22,12 +22,12 @@
         .content {
             font-size: 20px;
             font-weight: bold;
-            margin-top: 10px;
+            margin-top: -40px;
         }
 
         .btns {
             float: right;
-            width: 26%;
+            /* width: 26%; */
         }
 
         .modal-text {
@@ -55,36 +55,58 @@
     <div class="d-flex justify-content-around title">
         <h4>Nav</h4>
         <button class="btn btn-primary editBtn">新增+</button>
+        <input type="submit" form="form" value="儲存選單" class="btn btn-primary"></button>
     </div>
     <div class="row">
+        <form id="form" action="../api/edit.php" method="post">
         <?php foreach($rows as $row_main): ?>
             <?php if($row_main["main_id"] == 0):?>
                 <div class="col-6 cards">
                     <lable class="content">主選單:</lable>
-                    <input type="text" name="text" value="<?= $row_main["text"] ?>">
+                    <input type="hidden" name="[]['id']" value="<?= $row_main["id"] ?>">
+                    <input type="text" name="[]['text']" value="<?= $row_main["text"] ?>">
 
                     <label for="modalSh" class="modal-text">顯示:</label>
                     <input type="checkbox" id="modalSh" name="sh" 
                            style="width:21px; height:21px" value="" <?= $row_main["sh"] == 1 ? "checked" : ""?>><br>
+                    <lable class="content">副選單:</lable><br>
+                    <?php foreach($rows as $row_sub): ?>
+                        <?php if($row_sub["main_id"] == $row_main["id"]): ?>
+                            <input type="hidden" name="[]['id']" value="<?= $row_sub["id"] ?>">
+                            <input type="text" name="[]['text']" value="<?= $row_sub["text"] ?>">
 
+                            <label for="modalSh" class="modal-text">顯示:</label>
+                            <input type="checkbox" id="modalSh" name="[]['sh']" 
+                                   style="width:21px; height:21px" value="" <?= $row_sub["sh"] == 1 ? "checked" : ""?>>
+
+                            <button type="button"
+                                    class="btn btn-danger delBtn"
+                                    data-bs-id="<?= $row_sub["id"] ?>"
+                                    data-bs-text="<?= $row_sub["text"] ?>">
+                                    刪除
+                            </button><br>
+                        <?php endif ?>
+                    <?php endforeach ?>
+                    
                     <div class="content btns">
-                        <input type="submit" value="編輯" class="btn btn-primary editBtn"></button>
-                        <button class="btn btn-danger delBtn"
+                        <button type="button"
+                                class="btn btn-danger delBtn"
                                 data-bs-id="<?= $row_main["id"] ?>"
                                 data-bs-text="<?= $row_main["text"] ?>">
-                            刪除
+                                刪除主選單
                         </button>
                     </div>  
-                </div> 
+                </div>
             <?php endif ?>
         <?php endforeach ?>
+        </form>
     </div>
     <div class="modal editModal">
         <div class="modal-dialog">
             <!-- modal區塊 -->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title">編輯</h3>
+                    <h3 class="modal-title">新增</h3>
                 </div>
 
                 <div class="modal-body">
@@ -136,14 +158,10 @@
 <script>
     $(document).ready(function()
     {
-        //編輯按鈕
+        //新增按鈕
         const editBtn = $(".editBtn");
         const dismiss = $(".dismiss");
         const editModal = $(".editModal");
-
-        const id = $("#modalId");
-        const text = $("#modalText");
-        const sh = $("#modalSh");
         
         editBtn.click(function()
         {
