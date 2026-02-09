@@ -89,6 +89,11 @@
                     <?php endforeach ?>
                     
                     <div class="content btns">
+                        
+                        <button type="button"
+                                class="btn btn-secondary">
+                                新增副選單
+                        </button>
                         <button type="button"
                                 class="btn btn-danger delBtn"
                                 data-bs-id="<?= $row_main["id"] ?>"
