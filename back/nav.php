@@ -51,32 +51,35 @@
 <?php
     include "./api/db.php";
     $rows = $Nav->all();
+    $i = 0;
 ?>
     <div class="d-flex justify-content-around title">
         <h4>Nav</h4>
         <button class="btn btn-primary editBtn">新增+</button>
-        <input type="submit" form="form" value="儲存選單" class="btn btn-primary"></button>
+        <input type="submit" form="navForm" value="儲存全部" class="btn btn-primary"></button>
     </div>
     <div class="row">
-        <form id="form" action="../api/edit.php" method="post">
+        <form id="navForm" action="../api/edit.php?do=nav" method="post">
         <?php foreach($rows as $row_main): ?>
             <?php if($row_main["main_id"] == 0):?>
                 <div class="col-6 cards">
                     <lable class="content">主選單:</lable>
-                    <input type="hidden" name="[]['id']" value="<?= $row_main["id"] ?>">
-                    <input type="text" name="[]['text']" value="<?= $row_main["text"] ?>">
+                    <input type="hidden" name="<?= $i ?>['id']" value="<?= $row_main["id"] ?>">
+                    <input type="text" name="<?= $i ?>['text']" value="<?= $row_main["text"] ?>">
 
                     <label for="modalSh" class="modal-text">顯示:</label>
-                    <input type="checkbox" id="modalSh" name="sh" 
+                    <input type="checkbox" id="modalSh" name="<?= $i ?>['sh']" 
                            style="width:21px; height:21px" value="" <?= $row_main["sh"] == 1 ? "checked" : ""?>><br>
                     <lable class="content">副選單:</lable><br>
-                    <?php foreach($rows as $row_sub): ?>
+                    <?php 
+                    foreach($rows as $row_sub): 
+                    ?>
                         <?php if($row_sub["main_id"] == $row_main["id"]): ?>
-                            <input type="hidden" name="[]['id']" value="<?= $row_sub["id"] ?>">
-                            <input type="text" name="[]['text']" value="<?= $row_sub["text"] ?>">
+                            <input type="hidden" name="<?= $i ?>['id']" value="<?= $row_sub["id"] ?>">
+                            <input type="text" name="<?= $i ?>['text']" value="<?= $row_sub["text"] ?>">
 
                             <label for="modalSh" class="modal-text">顯示:</label>
-                            <input type="checkbox" id="modalSh" name="[]['sh']" 
+                            <input type="checkbox" id="modalSh" name="<?= $i ?>['sh']" 
                                    style="width:21px; height:21px" value="" <?= $row_sub["sh"] == 1 ? "checked" : ""?>>
 
                             <button type="button"
@@ -86,7 +89,10 @@
                                     刪除
                             </button><br>
                         <?php endif ?>
-                    <?php endforeach ?>
+                    <?php
+                    $i++; 
+                    endforeach 
+                    ?>
                     
                     <div class="content btns">
                         
@@ -115,7 +121,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="../api/edit.php?do=boxes" method="post" enctype="multipart/form-data">
+                    <form action="../api/edit.php?do=nav" method="post" enctype="multipart/form-data">
                         <input type="hidden" id="modalId" name="id" value="" >
 
                         <label for="modalText" class="modal-text">主選單:</label>
@@ -144,7 +150,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="../api/del.php?do=boxes" method="post" enctype="multipart/form-data">
+                    <form action="../api/del.php?do=nav" method="post" enctype="multipart/form-data">
                         <input type="hidden" id="delId" name="id" value="">
 
                         <label for="delModalText" class="modal-text">確定要刪除</label>

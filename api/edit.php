@@ -1,7 +1,6 @@
 <?php
 include "../api/db.php";
-$rows = $Carousel->all();
-
+$table = ${ucfirst($_GET["do"])};
 if(!empty($_FILES))
 {
     if(!empty($_FILES["img"]))
@@ -19,38 +18,47 @@ if(!empty($_FILES))
 
 $_POST["sh"] = isset($_POST["sh"]) ? 1 : 0;
 
-if($_GET["do"] == "carousel")
+echo "<pre>";
+    print_r($_POST);
+echo "</pre>";
+
+if($_GET['do'] == "nav")
+{
+    foreach($_POST as $row)
+    {   
+        echo "<pre>";
+        print_r($row);
+        echo "</pre>";
+        // if(!empty($row["id"]))
+        // {
+            // $table->update($row);
+            //檢查用
+            // $sql = $table->update($row);
+            // echo $sql;
+        // }
+        // else
+        // {
+            // $table->insert($row);
+            // $sql = $table->insert($row);
+            // echo $sql;
+        // } 
+    }
+}
+else
 {
     if(!empty($_POST["id"]))
     {
-        $Carousel->update($_POST);
+        $table->update($_POST);
         //檢查用
-        // $sql = $Carousel->update($_POST);
+        // $sql = $table->update($_POST);
         // echo $sql;
     }
     else
     {
-        $Carousel->insert($_POST);
-        // $sql = $Carousel->insert($_POST);
+        $table->insert($_POST);
+        // $sql = $table->insert($_POST);
         // echo $sql;
     }   
-    header("location:../back.php?do=carousel");
 }
-
-if($_GET["do"] == "boxes")
-{
-    if(!empty($_POST["id"]))
-    {
-        $Boxes->update($_POST);
-        // $sql = $Boxes->update($_POST);
-        // echo $sql;
-    }
-    else
-    {
-        $Boxes->insert($_POST);
-        // $sql = $Boxes->insert($_POST);
-        // echo $sql;
-    }
-    header("location:../back.php?do=boxes");
-}
+// header("location:../back.php?do=" . $_GET["do"]);
 ?>

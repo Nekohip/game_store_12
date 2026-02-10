@@ -46,9 +46,8 @@ Class DB
         $sql .= join(", ", $tmp) . " WHERE `id` = {$row['id']}";
         
         // 檢查用
-        // return $sql;
-        return $this->pdo->exec($sql);
-
+        return $sql;
+        // return $this->pdo->exec($sql);
     }
 
     public function insert($row)
@@ -57,8 +56,8 @@ Class DB
         $keys = array_keys($row);
         $sql .= join("`, `", $keys) . "`) VALUES ('" . join("', '", $row) . "')";
         // 檢查用
-        // return $sql;
-        return $this->pdo->exec($sql);
+        return $sql;
+        // return $this->pdo->exec($sql);
 
     }
 
