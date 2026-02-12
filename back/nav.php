@@ -69,7 +69,7 @@
 
                     <label for="modalSh" class="modal-text">顯示:</label>
                     <input type="checkbox" id="modalSh" name="<?= $i ?>['sh']" 
-                           style="width:21px; height:21px" value="" <?= $row_main["sh"] == 1 ? "checked" : ""?>><br>
+                           style="width:21px; height:21px" value="1" <?= $row_main["sh"] == 1 ? "checked" : ""?>><br>
                     <lable class="content">副選單:</lable><br>
                     <?php 
                     foreach($rows as $row_sub): 
@@ -80,7 +80,7 @@
 
                             <label for="modalSh" class="modal-text">顯示:</label>
                             <input type="checkbox" id="modalSh" name="<?= $i ?>['sh']" 
-                                   style="width:21px; height:21px" value="" <?= $row_sub["sh"] == 1 ? "checked" : ""?>>
+                                   style="width:21px; height:21px" value="1" <?= $row_sub["sh"] == 1 ? "checked" : ""?>>
 
                             <button type="button"
                                     class="btn btn-danger delBtn"
@@ -129,7 +129,7 @@
 
                         <label for="modalSh" class="modal-text">顯示:</label>
                         <input type="checkbox" id="modalSh" name="sh" 
-                               style="width:21px; height:21px" value="" checked><br>
+                               style="width:21px; height:21px" value="1" checked><br>
 
                         <div class="content btns">
                             <button type="button" class="btn btn-light dismiss">取消</button>

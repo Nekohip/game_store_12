@@ -16,7 +16,6 @@ if(!empty($_FILES))
     }    
 }
 
-$_POST["sh"] = isset($_POST["sh"]) ? 1 : 0;
 
 echo "<pre>";
     print_r($_POST);
@@ -25,27 +24,31 @@ echo "</pre>";
 if($_GET['do'] == "nav")
 {
     foreach($_POST as $row)
+    {
+        $row["sh"] = isset($row["sh"]) ? 1 : 0;
+    }
+
+    foreach($_POST as $row)
     {   
-        echo "<pre>";
-        print_r($row);
-        echo "</pre>";
-        // if(!empty($row["id"]))
-        // {
-            // $table->update($row);
-            //檢查用
+        if(!empty($row["id"]))
+        {
+            $table->update($row);
+            // 檢查用
             // $sql = $table->update($row);
             // echo $sql;
-        // }
-        // else
-        // {
-            // $table->insert($row);
+        }
+        else
+        {
+            $table->insert($row);
+            // // 檢查用
             // $sql = $table->insert($row);
             // echo $sql;
-        // } 
+        } 
     }
 }
 else
 {
+    $_POST["sh"] = isset($_POST["sh"]) ? 1 : 0;
     if(!empty($_POST["id"]))
     {
         $table->update($_POST);
@@ -60,5 +63,5 @@ else
         // echo $sql;
     }   
 }
-// header("location:../back.php?do=" . $_GET["do"]);
+header("location:../back.php?do=" . $_GET["do"]);
 ?>

@@ -112,7 +112,7 @@
 
                         <label for="modalSh" class="modal-text">顯示:</label>
                         <input type="checkbox" id="modalSh" name="sh" 
-                               style="width:21px; height:21px" value="" checked><br>
+                               style="width:21px; height:21px" value="1" checked><br>
                         <div class="content btns">
                             <button type="button" class="btn btn-light dismiss">取消</button>
                             <input type="submit" class="btn btn-primary" value="確定"></button>
