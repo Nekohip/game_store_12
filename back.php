@@ -104,7 +104,7 @@
                 }
                 else
                 {
-                    include "./back/white.php";
+                    include "./back/carousel.php";
                 }
             ?>
         </div>
