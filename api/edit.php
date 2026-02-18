@@ -16,18 +16,10 @@ if(!empty($_FILES))
     }    
 }
 
-
-echo "<pre>";
-    print_r($_POST);
-echo "</pre>";
-
 if($_GET['do'] == "nav")
 {
-    foreach($_POST as $row)
+    foreach($_POST as &$row)
     {
-        echo "<pre>";
-            print_r($row);
-        echo "</pre>";
         $row["sh"] = isset($row["sh"]) ? 1 : 0;
     }
 

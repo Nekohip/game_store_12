@@ -64,22 +64,22 @@
             <?php if($row_main["main_id"] == 0):?>
                 <div class="col-6 cards">
                     <lable class="content">主選單:</lable>
-                    <input type="hidden" name="[<?= $i ?>]['id']" value="<?= $row_main["id"] ?>">
-                    <input type="text" name="[<?= $i ?>]['text']" value="<?= $row_main["text"] ?>">
+                    <input type="hidden" name="<?= $i ?>[id]" value="<?= $row_main["id"] ?>">
+                    <input type="text" name="<?= $i ?>[text]" value="<?= $row_main["text"] ?>">
 
                     <label for="modalSh" class="modal-text">顯示:</label>
-                    <input type="checkbox" id="modalSh" name="[<?= $i ?>]['sh']" 
+                    <input type="checkbox" id="modalSh" name="<?= $i ?>[sh]" 
                            style="width:21px; height:21px" value="1" <?= $row_main["sh"] == 1 ? "checked" : ""?>><br>
                     <lable class="content">副選單:</lable><br>
                     <?php 
                     foreach($rows as $row_sub): 
                     ?>
                         <?php if($row_sub["main_id"] == $row_main["id"]): ?>
-                            <input type="hidden" name="[<?= $i ?>]['id']" value="<?= $row_sub["id"] ?>">
-                            <input type="text" name="[<?= $i ?>]['text']" value="<?= $row_sub["text"] ?>">
+                            <input type="hidden" name="<?= $i ?>[id]" value="<?= $row_sub["id"] ?>">
+                            <input type="text" name="<?= $i ?>[text]" value="<?= $row_sub["text"] ?>">
 
                             <label for="modalSh" class="modal-text">顯示:</label>
-                            <input type="checkbox" id="modalSh" name="[<?= $i ?>]['sh']" 
+                            <input type="checkbox" id="modalSh" name="<?= $i ?>[sh]" 
                                    style="width:21px; height:21px" value="1" <?= $row_sub["sh"] == 1 ? "checked" : ""?>>
 
                             <button type="button"
