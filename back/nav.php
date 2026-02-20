@@ -71,6 +71,8 @@
                     <input type="checkbox" id="modalSh" name="<?= $i ?>[sh]" 
                            style="width:21px; height:21px" value="1" <?= $row_main["sh"] == 1 ? "checked" : ""?>><br>
                     <lable class="content">副選單:</lable><br>
+
+                    <div id="sub">
                     <?php 
                     foreach($rows as $row_sub): 
                     ?>
@@ -94,11 +96,12 @@
                     $i++; 
                     endforeach 
                     ?>
-                    
+                    </div>
+
                     <div class="content btns">
                         <button type="button"
-                                class="btn btn-secondary" 
-                                data-bs-mainId="<?= $row_main["id"]?>">
+                                class="btn btn-secondary subBtn" 
+                                data-bs-mainId="<?= $row_main["id"] ?>">
                                 新增副選單
                         </button>
                         
@@ -156,6 +159,7 @@
 
                         <label for="delModalText" class="modal-text">確定要刪除</label>
                         <input type="text" id="delText" name="text" value="" readonly>？<br>
+
                         <div class="content btns">
                             <input type="submit" class="btn btn-danger" value="確定"></button>
                             <button type="button" class="btn btn-light delDismiss">取消</button>
@@ -205,6 +209,27 @@
         delDismiss.click(function()
         {
             delModal.hide();
+        });
+
+        //新增複選單按鈕
+        const subBtn = $(".subBtn");
+        const sub = $("#sub");
+        subBtn.click(function()
+        {
+            let thisId = $(this).attr("data-bs-mainId");
+            sub.append(`<input type="hidden" name="main_id" value="${thisId}">
+                        <input type="text" name="text" value="">
+
+                        <label for="modalSh" class="modal-text">顯示:</label>
+                        <input type="checkbox" id="modalSh" name="sh" 
+                               style="width:21px; height:21px" value="1" checked>
+
+                        <button type="button"
+                                class="btn btn-danger delBtn"
+                                data-bs-id="${thisId}"
+                                data-bs-text="">
+                                刪除
+                        </button><br>`);
         });
     });
 </script>

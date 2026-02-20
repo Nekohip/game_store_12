@@ -41,8 +41,7 @@ if($_GET['do'] == "nav")
         else
         {
             $table->insert($_POST);
-            header("location:../back.php?do=" . $_GET["do"]);
-            return;
+            break;
         }
     }
 }
