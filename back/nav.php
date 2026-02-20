@@ -76,6 +76,7 @@
                     ?>
                         <?php if($row_sub["main_id"] == $row_main["id"]): ?>
                             <input type="hidden" name="<?= $i ?>[id]" value="<?= $row_sub["id"] ?>">
+                            <input type="hidden" name="<?= $i ?>[main_id]" value="<?= $row_sub["main_id"] ?>">
                             <input type="text" name="<?= $i ?>[text]" value="<?= $row_sub["text"] ?>">
 
                             <label for="modalSh" class="modal-text">顯示:</label>
@@ -95,11 +96,12 @@
                     ?>
                     
                     <div class="content btns">
-                        
                         <button type="button"
-                                class="btn btn-secondary">
+                                class="btn btn-secondary" 
+                                data-bs-mainId="<?= $row_main["id"]?>">
                                 新增副選單
                         </button>
+                        
                         <button type="button"
                                 class="btn btn-danger delBtn"
                                 data-bs-id="<?= $row_main["id"] ?>"
@@ -121,8 +123,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="../api/edit.php?do=nav" method="post" enctype="multipart/form-data">
-                        <input type="hidden" id="modalId" name="id" value="" >
+                    <form action="../api/edit.php?do=nav" method="post">
 
                         <label for="modalText" class="modal-text">主選單:</label>
                         <input type="text" id="modalText" name="text" value=""><br>

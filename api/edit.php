@@ -19,26 +19,31 @@ if(!empty($_FILES))
 if($_GET['do'] == "nav")
 {
     foreach($_POST as &$row)
-    {
-        $row["sh"] = isset($row["sh"]) ? 1 : 0;
-    }
-
-    foreach($_POST as $row)
     {   
-        if(!empty($row["id"]))
+        if(is_array($row))
         {
-            $table->update($row);
-            // 檢查用
-            // $sql = $table->update($row);
-            // echo $sql;
+            $row["sh"] = isset($row["sh"]) ? 1 : 0;
+            if(!empty($row["id"]))
+            {
+                $table->update($row);
+                // 檢查用
+                // $sql = $table->update($row);
+                // echo $sql;
+            }
+            else
+            {
+                $table->insert($row);
+                // // 檢查用
+                // $sql = $table->insert($row);
+                // echo $sql;
+            } 
         }
         else
         {
-            $table->insert($row);
-            // // 檢查用
-            // $sql = $table->insert($row);
-            // echo $sql;
-        } 
+            $table->insert($_POST);
+            header("location:../back.php?do=" . $_GET["do"]);
+            return;
+        }
     }
 }
 else
