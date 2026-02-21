@@ -67,12 +67,11 @@
                     <input type="hidden" name="<?= $i ?>[id]" value="<?= $row_main["id"] ?>">
                     <input type="text" name="<?= $i ?>[text]" value="<?= $row_main["text"] ?>">
 
-                    <label for="modalSh" class="modal-text">顯示:</label>
-                    <input type="checkbox" id="modalSh" name="<?= $i ?>[sh]" 
+                    <label class="modal-text">顯示:</label>
+                    <input type="checkbox" name="<?= $i ?>[sh]" 
                            style="width:21px; height:21px" value="1" <?= $row_main["sh"] == 1 ? "checked" : ""?>><br>
                     <lable class="content">副選單:</lable><br>
 
-                    <div id="sub">
                     <?php 
                     foreach($rows as $row_sub): 
                     ?>
@@ -81,8 +80,8 @@
                             <input type="hidden" name="<?= $i ?>[main_id]" value="<?= $row_sub["main_id"] ?>">
                             <input type="text" name="<?= $i ?>[text]" value="<?= $row_sub["text"] ?>">
 
-                            <label for="modalSh" class="modal-text">顯示:</label>
-                            <input type="checkbox" id="modalSh" name="<?= $i ?>[sh]" 
+                            <label class="modal-text">顯示:</label>
+                            <input type="checkbox" name="<?= $i ?>[sh]" 
                                    style="width:21px; height:21px" value="1" <?= $row_sub["sh"] == 1 ? "checked" : ""?>>
 
                             <button type="button"
@@ -96,7 +95,6 @@
                     $i++; 
                     endforeach 
                     ?>
-                    </div>
 
                     <div class="content btns">
                         <button type="button"
@@ -131,8 +129,8 @@
                         <label for="modalText" class="modal-text">主選單:</label>
                         <input type="text" id="modalText" name="text" value=""><br>
 
-                        <label for="modalSh" class="modal-text">顯示:</label>
-                        <input type="checkbox" id="modalSh" name="sh" 
+                        <label class="modal-text">顯示:</label>
+                        <input type="checkbox" name="sh" 
                                style="width:21px; height:21px" value="1" checked><br>
 
                         <div class="content btns">
@@ -211,25 +209,27 @@
             delModal.hide();
         });
 
-        //新增複選單按鈕
+        //新增副選單按鈕
         const subBtn = $(".subBtn");
-        const sub = $("#sub");
+        let idCount = 999;
         subBtn.click(function()
         {
             let thisId = $(this).attr("data-bs-mainId");
-            sub.append(`<input type="hidden" name="main_id" value="${thisId}">
-                        <input type="text" name="text" value="">
+            $(this).parent().prevAll("br").first().after
+            (`<input type="hidden" name="${idCount}[main_id]" value="${thisId}">
+              <input type="text" name="${idCount}[text]" value="">
 
-                        <label for="modalSh" class="modal-text">顯示:</label>
-                        <input type="checkbox" id="modalSh" name="sh" 
-                               style="width:21px; height:21px" value="1" checked>
+              <label class="modal-text">顯示:</label>
+              <input type="checkbox" name="${idCount}[sh]" 
+                     style="width:21px; height:21px" value="1" checked>
 
-                        <button type="button"
-                                class="btn btn-danger delBtn"
-                                data-bs-id="${thisId}"
-                                data-bs-text="">
-                                刪除
-                        </button><br>`);
+              <button type="button"
+                      class="btn btn-danger delBtn"
+                      data-bs-id=""
+                      data-bs-text="">
+                      刪除
+              </button><br>`);
+              idCount ++;
         });
     });
 </script>
