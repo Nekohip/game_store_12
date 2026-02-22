@@ -211,7 +211,7 @@
 
         //新增副選單按鈕
         const subBtn = $(".subBtn");
-        let idCount = 999;
+        let idCount = 40;
         subBtn.click(function()
         {
             let thisId = $(this).attr("data-bs-mainId");
@@ -229,7 +229,7 @@
                       data-bs-text="">
                       刪除
               </button><br>`);
-              idCount ++;
+              idCount++;
         });
     });
 </script>
