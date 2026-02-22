@@ -106,71 +106,22 @@ include "./api/db.php";
         <!-- nav start -->
         <div class="collapse navbar-collapse " id="collapsibleNavbar">
             <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Games</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Link</a></li>
-                        <li><a class="dropdown-item" href="#">Another link</a></li>
-                        <li><a class="dropdown-item" href="#">A third link</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">PS5</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Link</a></li>
-                        <li><a class="dropdown-item" href="#">Another link</a></li>
-                        <li><a class="dropdown-item" href="#">A third link</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">PS4</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Link</a></li>
-                        <li><a class="dropdown-item" href="#">Another link</a></li>
-                        <li><a class="dropdown-item" href="#">A third link</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Service</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Link</a></li>
-                        <li><a class="dropdown-item" href="#">Another link</a></li>
-                        <li><a class="dropdown-item" href="#">A third link</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button"
-                        data-bs-toggle="dropdown">Accesories</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Link</a></li>
-                        <li><a class="dropdown-item" href="#">Another link</a></li>
-                        <li><a class="dropdown-item" href="#">A third link</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">News</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Link</a></li>
-                        <li><a class="dropdown-item" href="#">Another link</a></li>
-                        <li><a class="dropdown-item" href="#">A third link</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Store</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Link</a></li>
-                        <li><a class="dropdown-item" href="#">Another link</a></li>
-                        <li><a class="dropdown-item" href="#">A third link</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Support</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Link</a></li>
-                        <li><a class="dropdown-item" href="#">Another link</a></li>
-                        <li><a class="dropdown-item" href="#">A third link</a></li>
-                    </ul>
-                </li>
+                <?php $rows = $Nav->all(); ?>
+                <?php foreach($rows as $row_main): ?>
+                    <?php if($row_main["sh"] == 1 && $row_main["main_id"] == 0): ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><?= $row_main["text"] ?></a>
+                        <ul class="dropdown-menu">
+                            <?php foreach($rows as $row_sub): ?>
+                                <?php if($row_sub["sh"] == 1 && $row_main["id"] == $row_sub["main_id"]): ?>
+                                <li><a class="droppdown-item" href="#"><?= $row_sub["text"] ?></a></li>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </ul>
+                    </li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+
                 <button type="button" class="btn btn-default">
                     <span class="glyphicon glyphicon-sort-by-attributes"></span>
                 </button>
@@ -181,6 +132,7 @@ include "./api/db.php";
 </nav>
 <?php
 $rows = $Carousel->all();
+//用來計算哪個sh=1的id最小，剛進網頁active它
 $sh1Ids = [];
 foreach($rows as $row)
 {
@@ -199,6 +151,7 @@ $slideTo = 0;
     <div class="carousel-indicators">
     <?php foreach($rows as $row): ?>
         <?php if($row["sh"] == 1): ?>
+        <!-- 剛進網頁active sh1Ids裡id最小的 -->
         <button type="button" data-bs-target="#carousel" data-bs-slide-to=<?= (string)$slideTo ?>
         class="<?= $row["id"] == min($sh1Ids) ? 'active' : ''; ?>" id="img-btn">
             <img src="./upload/<?= $row["thumb"]; ?>" class="d-block w-100" alt="thumbnail">
