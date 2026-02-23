@@ -97,8 +97,9 @@
                     ?>
 
                     <div class="content btns">
-                        <button type="button"
+                        <button type="submit"
                                 class="btn btn-secondary subBtn" 
+                                form="navForm" 
                                 data-bs-mainId="<?= $row_main["id"] ?>">
                                 新增副選單
                         </button>

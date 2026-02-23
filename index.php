@@ -99,7 +99,8 @@ include "./api/db.php";
 </nav>
 <nav class="navbar navbar-expand-sm bg-white navbar-white fixed-top" id="nav2">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="./img/pslogo.png" width="40px"></a>
+        <!-- 左上logo -->
+        <a class="navbar-brand" href="/index.php"><img src="./img/pslogo.png" width="40px"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -127,6 +128,12 @@ include "./api/db.php";
                 </button>
             </ul>
         </div>
+        <a href="/back.php">
+            <button type="button" class="btn btn-secondary">
+                後台
+            </button>
+        </a>
+        
         <!-- nav end -->
     </div>
 </nav>

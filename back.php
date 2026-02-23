@@ -20,18 +20,12 @@
             box-sizing: border-box;
         }
 
-        .header {
-            background-color: blue;
-            height: 20vh;
-            width: 100%;
-        }
-
         .sidebar {
             /* background-color: red; */
             border: 1px black solid;
             height: 70vh;
             width: 13%;
-            margin-top: 270px;
+            margin-top: 144px;
         }
 
         .main {
@@ -48,7 +42,7 @@
             /* border: 1px black solid; */
             /* height: 160vh; */
             width: 65%;
-            margin-top: 280px;
+            margin-top: 130px;
             margin-left: 560px;
             margin-bottom: 50px;
         }
@@ -56,12 +50,47 @@
         .nav-item {
             margin-top: 5px;
         }
+
+        #nav1 {
+            max-height: 40px;
+        }
+    
+        #nav2 {
+            margin-top: 40px;
+        }
         
     </style>
 </head>
 <body>
-    <div class="header position-fixed top-0 end-0">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" id="nav1">
+        <div class="container-fluid con-logo justify-content-end">
+            <a class="navbar-brand logo" href="#">SONY</a>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-sm bg-white navbar-white fixed-top" id="nav2">
+    <div class="container-fluid">
+        <!-- 左上logo -->
+        <a class="navbar-brand" href="/index.php"><img src="./img/pslogo.png" width="40px"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- nav start -->
+        <div class="collapse navbar-collapse " id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <button type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-sort-by-attributes"></span>
+                </button>
+            </ul>
+        </div>
+        <a href="/index.php">
+            <button type="button" class="btn btn-secondary">
+                前台
+            </button>
+        </a>
+        
+        <!-- nav end -->
     </div>
+</nav>
 
     <div class="d-flex flex-row container-fluid main">
         <div class="container d-flex flex-column flex-shrink-0 position-fixed start-0 sidebar">
