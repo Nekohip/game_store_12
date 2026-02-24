@@ -37,7 +37,6 @@
         }
 
         .cards {
-            border: 1px black solid;
             margin: 32px 1px 0px 227px;
         }
 
@@ -62,7 +61,7 @@
         <form id="navForm" action="../api/edit.php?do=nav" method="post">
         <?php foreach($rows as $row_main): ?>
             <?php if($row_main["main_id"] == 0):?>
-                <div class="col-6 cards">
+                <div class="col-6 cards shadow-lg">
                     <lable class="content">主選單:</lable>
                     <input type="hidden" name="<?= $i ?>[id]" value="<?= $row_main["id"] ?>">
                     <input type="text" name="<?= $i ?>[text]" value="<?= $row_main["text"] ?>">

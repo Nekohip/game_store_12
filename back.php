@@ -22,8 +22,7 @@
 
         .sidebar {
             /* background-color: red; */
-            border: 1px black solid;
-            height: 70vh;
+            height: 80vh;
             width: 13%;
             margin-top: 144px;
         }
@@ -92,8 +91,8 @@
     </div>
 </nav>
 
-    <div class="d-flex flex-row container-fluid main">
-        <div class="container d-flex flex-column flex-shrink-0 position-fixed start-0 sidebar">
+    <div class="d-flex flex-row container-fluid main ">
+        <div class="container d-flex flex-column flex-shrink-0 position-fixed start-0 sidebar shadow">
             <ul class="nav nav-pills d-flex flex-column">
                 <li class="nav-item">
                     <a href="?do=carousel" class="btn btn-outline-primary w-100">

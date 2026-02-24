@@ -37,7 +37,6 @@
         }
 
         .cards {
-            border: 1px black solid;
             margin: 32px 1px 0px 227px;
         }
 
@@ -58,7 +57,7 @@
     </div>
     <div class="row">
         <?php foreach($rows as $row): ?>
-        <div class="col-6 cards">
+        <div class="col-6 cards shadow-lg">
             <div class="content">標題:<?= $row["text"] ?></div>
             
             <div class="content">
