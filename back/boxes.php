@@ -63,7 +63,7 @@
             <div class="content">
                 圖片:<img src="../upload/<?= $row["img"] ?>" style="width:500px;">
             </div>
-            <div class="content"><?= $row["sh"] == 1 ? "顯示中✓" : ""?></div>
+            <div class="content"><?= $row["sh"] == 1 ? "顯示中✓" : "已隱藏X"?></div>
             <div class="content btns">
                 <button class="btn btn-primary editBtn" 
                         data-bs-id="<?= $row["id"] ?>"

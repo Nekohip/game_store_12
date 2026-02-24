@@ -67,7 +67,7 @@
             <a class="navbar-brand logo" href="#">SONY</a>
         </div>
     </nav>
-    <nav class="navbar navbar-expand-sm bg-white navbar-white fixed-top" id="nav2">
+    <nav class="navbar navbar-expand-sm bg-white navbar-white fixed-top shadow" id="nav2">
     <div class="container-fluid">
         <!-- 左上logo -->
         <a class="navbar-brand" href="/index.php"><img src="./img/pslogo.png" width="40px"></a>
