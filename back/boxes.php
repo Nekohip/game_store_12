@@ -44,6 +44,11 @@
             width: 32%;
             margin: auto;
         }
+
+        .info {
+            margin-left: -170px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -55,6 +60,11 @@
         <h4>Boxes</h4>
         <button class="btn btn-primary editBtn">新增+</button>
     </div>
+
+    <div class="d-flex justify-content-center info">
+        <h6>建議解析度:286x274</h6>
+    </div>
+
     <div class="row">
         <?php foreach($rows as $row): ?>
         <div class="col-6 cards shadow-lg">

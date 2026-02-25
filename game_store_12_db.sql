@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2026-02-22 10:38:12
+-- 產生時間： 2026-02-25 08:01:13
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `boxes` (
-  `id` int(10) NOT NULL,
-  `text` text NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
+  `text` varchar(20) NOT NULL,
   `img` text NOT NULL,
-  `sh` int(1) NOT NULL
+  `sh` int(1) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -39,11 +39,10 @@ CREATE TABLE `boxes` (
 --
 
 INSERT INTO `boxes` (`id`, `text`, `img`, `sh`) VALUES
-(13, 'DQ1+2', 'game2.png', 1),
-(14, 'LID', 'game1.png', 1),
-(16, 'TOX', 'game3.png', 1),
-(17, '塊魂', 'game4.png', 1),
-(18, '', 'game5.png', 1);
+(1, 'LET IT DIE', 'game1.png', 1),
+(2, 'DQ1+2', 'game2.png', 1),
+(3, '無盡傳奇', 'game3.png', 1),
+(5, '死亡擱淺2', 'game8.png', 1);
 
 -- --------------------------------------------------------
 
@@ -52,10 +51,10 @@ INSERT INTO `boxes` (`id`, `text`, `img`, `sh`) VALUES
 --
 
 CREATE TABLE `carousel` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(20) UNSIGNED NOT NULL,
   `text` text NOT NULL,
-  `img` varchar(20) NOT NULL,
-  `thumb` varchar(20) NOT NULL,
+  `img` text NOT NULL,
+  `thumb` text NOT NULL,
   `sh` int(1) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -64,10 +63,10 @@ CREATE TABLE `carousel` (
 --
 
 INSERT INTO `carousel` (`id`, `text`, `img`, `thumb`, `sh`) VALUES
-(2, '羊蹄山戰鬼', 'psstore2.png', 'psstore2-l.png', 1),
-(3, 'U惠', 'psstore4.png', 'psstore4-l.png', 1),
-(4, '年度回顧', 'psstore1.png', 'psstore1-l.png', 1),
-(7, '年度回顧', 'psstore5.png', 'psstore5-l.png', 1);
+(1, '神機迷網', 'psstore3.png', 'psstore3-l.png', 1),
+(2, '年度回顧', 'psstore5.png', 'psstore5-l.png', 1),
+(3, '馬拉松', 'psstore1.png', 'psstore1-l.png', 1),
+(6, '羊蹄山戰鬼', 'psstore2.png', 'psstore2-l.png', 1);
 
 -- --------------------------------------------------------
 
@@ -76,26 +75,23 @@ INSERT INTO `carousel` (`id`, `text`, `img`, `thumb`, `sh`) VALUES
 --
 
 CREATE TABLE `nav` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) NOT NULL,
   `text` text NOT NULL,
   `sh` int(1) NOT NULL,
-  `main_id` int(10) UNSIGNED NOT NULL
+  `main_id` int(10) NOT NULL,
+  `url` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `nav`
 --
 
-INSERT INTO `nav` (`id`, `text`, `sh`, `main_id`) VALUES
-(1, '456', 1, 0),
-(3, 'PS4', 1, 1),
-(4, 'PS5', 1, 0),
-(5, '遊戲', 1, 4),
-(6, '控制器', 1, 4),
-(25, '13', 1, 1),
-(26, '233', 1, 1),
-(27, '23', 1, 4),
-(28, '456', 1, 24);
+INSERT INTO `nav` (`id`, `text`, `sh`, `main_id`, `url`) VALUES
+(1, 'Games', 1, 0, ''),
+(2, 'PS5', 1, 1, 'https://www.playstation.com/en-tw/ps5/?smcid=store%3Aen-tw%3Acategory-3a8d38c3-3c22-4287-a7ac-836474d77f32%3Aprimary%20nav%3Amsg-ps5%3Aps5&emcid=pa-co-531059'),
+(3, 'PS4', 1, 1, 'https://www.playstation.com/en-tw/ps4/?smcid=pdc%3Aen-tw%3Aps5%3Aprimary%20nav%3Amsg-ps4%3Aconsole&emcid=pa-co-531059%3E'),
+(4, 'PS4', 1, 0, ''),
+(5, 'PS4', 1, 4, 'https://www.playstation.com/zh-hant-tw/ps4/?smcid=pdc%3Azh-hant-tw%3Aps4%3Aprimary%20nav%3Amsg-ps4%3A');
 
 --
 -- 已傾印資料表的索引
@@ -127,19 +123,19 @@ ALTER TABLE `nav`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `boxes`
 --
 ALTER TABLE `boxes`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `carousel`
 --
 ALTER TABLE `carousel`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `nav`
 --
 ALTER TABLE `nav`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -44,6 +44,9 @@
             width: 32%;
             margin: auto;
         }
+        .sub {
+            margin-top: 0px;
+        }
     </style>
 </head>
 <body>
@@ -69,35 +72,32 @@
                     <label class="modal-text">顯示:</label>
                     <input type="checkbox" name="<?= $i ?>[sh]" 
                            style="width:21px; height:21px" value="1" <?= $row_main["sh"] == 1 ? "checked" : ""?>><br>
+
                     <lable class="content">副選單:</lable><br>
+                        <?php foreach($rows as $row_sub): ?>
+                            <?php if($row_sub["main_id"] == $row_main["id"]): ?>
+                                <div class="sub">
+                                    <input type="hidden" name="<?= $i ?>[id]" value="<?= $row_sub["id"] ?>">
+                                    <input type="hidden" name="<?= $i ?>[main_id]" value="<?= $row_sub["main_id"] ?>">
+                                    <label>名稱:</label>
+                                    <input type="text" name="<?= $i ?>[text]" value="<?= $row_sub["text"] ?>"><br>
+                                    <label>URL:</label>
+                                    <input type="text" name="<?= $i ?>[url]" value="<?= $row_sub["url"] ?>">
 
-                    <?php 
-                    foreach($rows as $row_sub): 
-                    ?>
-                        <?php if($row_sub["main_id"] == $row_main["id"]): ?>
-                            <input type="hidden" name="<?= $i ?>[id]" value="<?= $row_sub["id"] ?>">
-                            <input type="hidden" name="<?= $i ?>[main_id]" value="<?= $row_sub["main_id"] ?>">
-                            <label>名稱:</label>
-                            <input type="text" name="<?= $i ?>[text]" value="<?= $row_sub["text"] ?>"><br>
-                            <label>URL:</label>
-                            <input type="text" name="<?= $i ?>[url]" value="<?= $row_sub["url"] ?>">
+                                    <label class="modal-text">顯示:</label>
+                                    <input type="checkbox" name="<?= $i ?>[sh]" 
+                                           style="width:21px; height:21px" value="1" <?= $row_sub["sh"] == 1 ? "checked" : ""?>>
 
-                            <label class="modal-text">顯示:</label>
-                            <input type="checkbox" name="<?= $i ?>[sh]" 
-                                   style="width:21px; height:21px" value="1" <?= $row_sub["sh"] == 1 ? "checked" : ""?>>
-
-                            <button type="button"
-                                    class="btn btn-danger delBtn"
-                                    data-bs-id="<?= $row_sub["id"] ?>"
-                                    data-bs-text="<?= $row_sub["text"] ?>">
-                                    刪除
-                            </button><br>
-                        <?php endif ?>
-                    <?php
-                    $i++; 
-                    endforeach 
-                    ?>
-
+                                    <button type="button"
+                                            class="btn btn-danger delBtn"
+                                            data-bs-id="<?= $row_sub["id"] ?>"
+                                            data-bs-text="<?= $row_sub["text"] ?>">
+                                            刪除
+                                    </button>
+                                </div><br>
+                            <?php endif ?>
+                        <?php $i++; endforeach; ?>
+                    
                     <div class="content btns">
                         <button type="submit"
                                 class="btn btn-secondary subBtn" 

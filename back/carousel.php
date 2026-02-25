@@ -44,6 +44,10 @@
             width: 32%;
             margin: auto;
         }
+        .info {
+            margin-left: -170px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -54,6 +58,9 @@
     <div class="d-flex justify-content-around title">
         <h4>Carousel</h4>
         <button class="btn btn-primary editBtn">新增+</button>
+    </div>
+    <div class="d-flex justify-content-center info">
+        <h6>建議解析度: 大圖1889x703 縮圖565x323</h6>
     </div>
     <div class="row">
         <?php foreach($rows as $row): ?>
