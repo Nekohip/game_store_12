@@ -77,7 +77,10 @@
                         <?php if($row_sub["main_id"] == $row_main["id"]): ?>
                             <input type="hidden" name="<?= $i ?>[id]" value="<?= $row_sub["id"] ?>">
                             <input type="hidden" name="<?= $i ?>[main_id]" value="<?= $row_sub["main_id"] ?>">
-                            <input type="text" name="<?= $i ?>[text]" value="<?= $row_sub["text"] ?>">
+                            <label>名稱:</label>
+                            <input type="text" name="<?= $i ?>[text]" value="<?= $row_sub["text"] ?>"><br>
+                            <label>URL:</label>
+                            <input type="text" name="<?= $i ?>[url]" value="<?= $row_sub["url"] ?>">
 
                             <label class="modal-text">顯示:</label>
                             <input type="checkbox" name="<?= $i ?>[sh]" 

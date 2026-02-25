@@ -110,12 +110,13 @@ include "./api/db.php";
                 <?php $rows = $Nav->all(); ?>
                 <?php foreach($rows as $row_main): ?>
                     <?php if($row_main["sh"] == 1 && $row_main["main_id"] == 0): ?>
+                    <!-- 副選單 -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><?= $row_main["text"] ?></a>
+                        <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown"><?= $row_main["text"] ?></a>
                         <ul class="dropdown-menu">
                             <?php foreach($rows as $row_sub): ?>
                                 <?php if($row_sub["sh"] == 1 && $row_main["id"] == $row_sub["main_id"]): ?>
-                                <li><a class="dropdown-item" href="#"><?= $row_sub["text"] ?></a></li>
+                                <li><a class="dropdown-item" href="<?= $row_sub["url"] ?>>"><?= $row_sub["text"] ?></a></li>
                                 <?php endif; ?>
                             <?php endforeach; ?>
                         </ul>
