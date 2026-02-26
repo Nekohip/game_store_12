@@ -2,90 +2,94 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fake Game Store</title>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css"
-    integrity="sha512-2bBQCjcnw658Lho4nlXJcc6WkV/UxpE/sAokbXPxQNGqmNdQrWqtw26Ns9kFF/yG792pKR1Sx8/Y1Lf1XN4GKA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.bundle.min.js"
-    integrity="sha512-HvOjJrdwNpDbkGJIG2ZNqDlVqMo77qbs4Me4cah0HoDrfhrbA+8SBlZn1KrvAQw7cILLPFJvdwIgphzQmMm+Pw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<style>
-    #nav1 {
-        max-height: 40px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Game Store</title>
     
-    #nav2 {
-        margin-top: 40px;
-    }
-    
-    .box1, .box2 {
-        width: 100%;
-        margin-top: 20px;
-        display: flex;
-        justify-content: center;
-    }
-    
-    .box2 {
-        margin-top: 50px;
-    }
-    
-    .carousel {
-        margin-top: 95px;
-    }
-    
-    #img-btn {
-        margin-top: -110px;
-        margin-right: 40px;
-        width: 150px;
-    }
-    #container1 {
-        height: 100vh;
-        margin: auto;
-        background-color: rgba(0, 0, 0, 0.9);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .text {
-        color: white;
-        font-size: 40px;
-        font-family:  "Noto Sans TC Light";
-        display: flex;
-        justify-content: center;
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
-    
-    .text-name {
-        color: white;
-        font-size: 24px;
-        font-family:  "Noto Sans TC Light";
-        display: flex;
-        justify-content: center;
-        padding-top: 10px
-    }
-    
-    .img-fluid {
-        transition: all 0.5s ease;
-    }
-    
-    .img-fluid:hover {
-        box-shadow: 0 0 25px rgb(0, 255, 242);
-        transform: scale(1.05);
-    }
-    
-    .row {
-        width: 80%;
-        display: flex;
-        justify-content: space-around;
-    }
-</style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.bundle.min.js"
+                integrity="sha512-HvOjJrdwNpDbkGJIG2ZNqDlVqMo77qbs4Me4cah0HoDrfhrbA+8SBlZn1KrvAQw7cILLPFJvdwIgphzQmMm+Pw=="
+                crossorigin="anonymous" 
+                referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" 
+          integrity="sha512-2bBQCjcnw658Lho4nlXJcc6WkV/UxpE/sAokbXPxQNGqmNdQrWqtw26Ns9kFF/yG792pKR1Sx8/Y1Lf1XN4GKA==" 
+          crossorigin="anonymous" 
+          referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" 
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" 
+            crossorigin="anonymous" 
+            referrerpolicy="no-referrer"></script>
+    <style>
+        #nav1 {
+            max-height: 40px;
+        }
+        
+        #nav2 {
+            margin-top: 40px;
+        }
+        
+        .box1, .box2 {
+            width: 100%;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .box2 {
+            margin-top: 50px;
+        }
+        
+        .carousel {
+            margin-top: 95px;
+        }
+        
+        #img-btn {
+            margin-top: -110px;
+            margin-right: 40px;
+            width: 150px;
+        }
+        #container1 {
+            height: 100vh;
+            margin: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .text {
+            color: white;
+            font-size: 40px;
+            font-family:  "Noto Sans TC Light";
+            display: flex;
+            justify-content: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        
+        .text-name {
+            color: white;
+            font-size: 24px;
+            font-family:  "Noto Sans TC Light";
+            display: flex;
+            justify-content: center;
+            padding-top: 10px
+        }
+        
+        .img-fluid {
+            transition: all 0.5s ease;
+        }
+        
+        .img-fluid:hover {
+            box-shadow: 0 0 25px rgb(0, 255, 242);
+            transform: scale(1.05);
+        }
+        
+        .row {
+            width: 80%;
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
 </head>
 
 <?php
@@ -132,6 +136,11 @@ include "./api/db.php";
         <a href="/back.php">
             <button type="button" class="btn btn-secondary">
                 後台
+            </button>
+        </a>
+        <a href="./front/login.php">
+            <button type="button" class="btn btn-secondary">
+                登入
             </button>
         </a>
         

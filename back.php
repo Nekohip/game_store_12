@@ -9,11 +9,14 @@
             integrity="sha512-HvOjJrdwNpDbkGJIG2ZNqDlVqMo77qbs4Me4cah0HoDrfhrbA+8SBlZn1KrvAQw7cILLPFJvdwIgphzQmMm+Pw=="
             crossorigin="anonymous" 
             referrerpolicy="no-referrer"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" 
           integrity="sha512-2bBQCjcnw658Lho4nlXJcc6WkV/UxpE/sAokbXPxQNGqmNdQrWqtw26Ns9kFF/yG792pKR1Sx8/Y1Lf1XN4GKA==" 
           crossorigin="anonymous" 
           referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" 
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" 
+            crossorigin="anonymous" 
+            referrerpolicy="no-referrer"></script>
 
     <style>
         * {
@@ -25,10 +28,6 @@
             height: 80vh;
             width: 13%;
             margin-top: 144px;
-        }
-
-        .main {
-            /* background-color: yellow; */
         }
 
         .main>.row {
@@ -48,6 +47,10 @@
 
         .nav-item {
             margin-top: 5px;
+        }
+
+        .btn {
+            margin-top: 10px;
         }
 
         #nav1 {
@@ -92,7 +95,7 @@
 </nav>
 
     <div class="d-flex flex-row container-fluid main ">
-        <div class="container d-flex flex-column flex-shrink-0 position-fixed start-0 sidebar shadow">
+        <div class="d-flex flex-column flex-shrink-0 position-fixed start-0 sidebar shadow">
             <ul class="nav nav-pills d-flex flex-column">
                 <li class="nav-item">
                     <a href="?do=carousel" class="btn btn-outline-primary w-100">
