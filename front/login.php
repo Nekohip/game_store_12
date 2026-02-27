@@ -19,18 +19,41 @@
             referrerpolicy="no-referrer"></script>
 
     <style>
+        .container {
+            background-color: lightblue;
+            width: 612px;
+            height: 40vh;
+            margin-top: 100px;
+        }
 
+        input {
+            width: 290px;
+            height: 39px;
+        }
+
+        .login-inputs {
+            margin-left: 118px;
+            padding-top: 60px;
+        }
+
+        .input-group {
+            margin-top: 12px;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col acc">
+    <div class="container rounded">
+        <form class="login-inputs" action="./api/login.php" method="post">
+            <div class="input-group">
+                <span class="input-group-text">帳號</span>
+                <input type="text" name="acc">
+            </div>
 
-            </div>
-            <div class="col pwd">
-                
-            </div>
+            <div class="input-group">
+                <span class="input-group-text">密碼</span>
+                <input type="password" name="pw">
+            </form>
         </div>
     </div>
 </body>

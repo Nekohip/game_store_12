@@ -49,7 +49,7 @@
             margin-left: 621px;
         }
         .info {
-            margin-left: -170px;
+            margin-left: 175px;
             margin-top: 20px;
         }
     </style>
