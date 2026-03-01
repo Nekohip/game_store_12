@@ -40,6 +40,16 @@
             margin-top: 12px;
             font-size: 18px;
         }
+
+        .login-btn {
+            width: 346px;
+            margin-top: 20px;
+        }
+
+        .login-btn>div {
+            width: 160px;
+        }
+
     </style>
 </head>
 <body>
@@ -53,8 +63,16 @@
             <div class="input-group">
                 <span class="input-group-text">密碼</span>
                 <input type="password" name="pw">
-            </form>
-        </div>
+            </div>
+            <div class="login-btn d-flex justify-content-around">
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-primary">登入</button>
+                </div>
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-secondary">註冊</button>
+                </div>
+            </div>
+        </form>
     </div>
 </body>
 </html>
