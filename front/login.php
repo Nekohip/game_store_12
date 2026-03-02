@@ -20,7 +20,7 @@
 
     <style>
         .container {
-            background-color: lightblue;
+            background-color: aliceblue;
             width: 612px;
             height: 40vh;
             margin-top: 100px;
@@ -53,7 +53,7 @@
     </style>
 </head>
 <body>
-    <div class="container rounded">
+    <div class="container rounded shadow-lg">
         <form class="login-inputs" action="./api/login.php" method="post">
             <div class="input-group">
                 <span class="input-group-text">帳號</span>
