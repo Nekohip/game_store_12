@@ -1,4 +1,5 @@
 <?php
+session_start();
 Class DB 
 {
     private $dsn = "mysql:host=localhost; 
@@ -69,16 +70,17 @@ Class DB
 
     public function count($row)
     {
-        session_start();
         $sql = "SELECT count(*) FROM `$this->table` WHERE ";
         $tmp = $this->array_to_sql($row);
-        $sql .= join("AND", $tmp);
+        $sql .= join(" AND ", $tmp);
         return $this->pdo->query($sql)->fetchColumn();
     }
 
     public function find($row)
     {
-        $sql = "SELECT * FROM `$this->table` WHERE `email` = '{$row["email"]}'";
+        $sql = "SELECT * FROM `$this->table` WHERE ";
+        $tmp = $this->array_to_sql($row);
+        $sql .= join(" AND ", $tmp);  
         return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     }
 }

@@ -138,12 +138,20 @@ include "./api/db.php";
                     後台
                 </button>
             </a>
-            <a href="./front/login.php">
-                <button type="button" class="btn btn-secondary">
-                    登入
-                </button>
-            </a>
-                                    
+            <?php if(empty($_SESSION["mem"])): ?>
+                <a href="./front/login.php">
+                    <button type="button" class="btn btn-secondary">
+                        登入
+                    </button>
+                </a>
+            <?php else: ?>
+                <p class="welcome"><?= $_SESSION["mem"] ?> 已登入</p>
+                <a href="./front/logout.php">
+                    <button type="button" class="btn btn-secondary">
+                        登出
+                    </button>
+                </a>
+            <?php endif; ?>                
             <!-- nav end -->
         </div>
     </nav>
@@ -200,7 +208,7 @@ $slideTo = 0;
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
         <!-- <span class="carousel-control-next-icon"></span> -->
-         <img src="./img/arrow-r.png" alt="arrow" class="d-block" style="width:30%">
+        <img src="./img/arrow-r.png" alt="arrow" class="d-block" style="width:30%">
     </button>
 </div>
 <!-- carousel end -->

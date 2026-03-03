@@ -56,10 +56,7 @@
     </style>
 </head>
 <body>
-<?php
-    include "./api/db.php";
-    $rows = $Boxes->all();
-?>
+<?php $rows = $Boxes->all(); ?>
     <div class="d-flex justify-content-around title">
         <h4>Boxes</h4>
         <button class="btn btn-primary editBtn">新增+</button>

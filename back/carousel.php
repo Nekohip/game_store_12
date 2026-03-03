@@ -55,10 +55,7 @@
     </style>
 </head>
 <body>
-<?php
-    include "./api/db.php";
-    $rows = $Carousel->all();
-?>
+<?php $rows = $Carousel->all(); ?>
     <div class="d-flex justify-content-around title">
         <h4>Carousel</h4>
         <button class="btn btn-primary editBtn">新增+</button>

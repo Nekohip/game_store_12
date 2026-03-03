@@ -55,7 +55,6 @@
 </head>
 <body>
 <?php
-    include "./api/db.php";
     $rows = $Nav->all();
     $i = 0;
 ?>
