@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2026-02-25 08:01:13
+-- 產生時間： 2026-03-03 09:22:15
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -42,7 +42,8 @@ INSERT INTO `boxes` (`id`, `text`, `img`, `sh`) VALUES
 (1, 'LET IT DIE', 'game1.png', 1),
 (2, 'DQ1+2', 'game2.png', 1),
 (3, '無盡傳奇', 'game3.png', 1),
-(5, '死亡擱淺2', 'game8.png', 1);
+(5, '死亡擱淺2', 'game8.png', 1),
+(6, '羊蹄山戰鬼', 'game7.png', 1);
 
 -- --------------------------------------------------------
 
@@ -71,6 +72,27 @@ INSERT INTO `carousel` (`id`, `text`, `img`, `thumb`, `sh`) VALUES
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `member`
+--
+
+CREATE TABLE `member` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `pw` varchar(20) NOT NULL,
+  `name` text NOT NULL,
+  `email` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `member`
+--
+
+INSERT INTO `member` (`id`, `pw`, `name`, `email`) VALUES
+(1, 'endmin', 'endmin', 'endmin@tuta.io'),
+(2, 'admin', 'admin', 'admin@tuta.io');
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `nav`
 --
 
@@ -91,7 +113,9 @@ INSERT INTO `nav` (`id`, `text`, `sh`, `main_id`, `url`) VALUES
 (2, 'PS5', 1, 1, 'https://www.playstation.com/en-tw/ps5/?smcid=store%3Aen-tw%3Acategory-3a8d38c3-3c22-4287-a7ac-836474d77f32%3Aprimary%20nav%3Amsg-ps5%3Aps5&emcid=pa-co-531059'),
 (3, 'PS4', 1, 1, 'https://www.playstation.com/en-tw/ps4/?smcid=pdc%3Aen-tw%3Aps5%3Aprimary%20nav%3Amsg-ps4%3Aconsole&emcid=pa-co-531059%3E'),
 (4, 'PS4', 1, 0, ''),
-(5, 'PS4', 1, 4, 'https://www.playstation.com/zh-hant-tw/ps4/?smcid=pdc%3Azh-hant-tw%3Aps4%3Aprimary%20nav%3Amsg-ps4%3A');
+(5, 'PS4', 1, 4, 'https://www.playstation.com/zh-hant-tw/ps4/?smcid=pdc%3Azh-hant-tw%3Aps4%3Aprimary%20nav%3Amsg-ps4%3A'),
+(19, 'Meme', 1, 0, ''),
+(20, 'Rick', 1, 19, 'https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
 --
 -- 已傾印資料表的索引
@@ -110,6 +134,12 @@ ALTER TABLE `carousel`
   ADD PRIMARY KEY (`id`);
 
 --
+-- 資料表索引 `member`
+--
+ALTER TABLE `member`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 資料表索引 `nav`
 --
 ALTER TABLE `nav`
@@ -123,7 +153,7 @@ ALTER TABLE `nav`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `boxes`
 --
 ALTER TABLE `boxes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `carousel`
@@ -132,10 +162,16 @@ ALTER TABLE `carousel`
   MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- 使用資料表自動遞增(AUTO_INCREMENT) `member`
+--
+ALTER TABLE `member`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- 使用資料表自動遞增(AUTO_INCREMENT) `nav`
 --
 ALTER TABLE `nav`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
