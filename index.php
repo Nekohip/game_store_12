@@ -96,57 +96,57 @@
 include "./api/db.php";
 ?>
 <body>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" id="nav1">
-    <div class="container-fluid con-logo justify-content-end">
-        <a class="navbar-brand logo" href="#">SONY</a>
-    </div>
-</nav>
-<nav class="navbar navbar-expand-sm bg-white navbar-white fixed-top shadow" id="nav2">
-    <div class="container-fluid">
-        <!-- 左上logo -->
-        <a class="navbar-brand" href="/index.php"><img src="./img/pslogo.png" width="40px"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <!-- nav start -->
-        <div class="collapse navbar-collapse " id="collapsibleNavbar">
-            <ul class="navbar-nav">
-                <?php $rows = $Nav->all(); ?>
-                <?php foreach($rows as $row_main): ?>
-                    <?php if($row_main["sh"] == 1 && $row_main["main_id"] == 0): ?>
-                    <!-- 副選單 -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown"><?= $row_main["text"] ?></a>
-                        <ul class="dropdown-menu">
-                            <?php foreach($rows as $row_sub): ?>
-                                <?php if($row_sub["sh"] == 1 && $row_main["id"] == $row_sub["main_id"]): ?>
-                                <li><a class="dropdown-item" href="<?= $row_sub["url"] ?>>"><?= $row_sub["text"] ?></a></li>
-                                <?php endif; ?>
-                            <?php endforeach; ?>
-                        </ul>
-                    </li>
-                    <?php endif; ?>
-                <?php endforeach; ?>
-
-                <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-sort-by-attributes"></span>
-                </button>
-            </ul>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" id="nav1">
+        <div class="container-fluid con-logo justify-content-end">
+            <a class="navbar-brand logo" href="#">SONY</a>
         </div>
-        <a href="/back.php">
-            <button type="button" class="btn btn-secondary">
-                後台
+    </nav>
+    <nav class="navbar navbar-expand-sm bg-white navbar-white fixed-top shadow" id="nav2">
+        <div class="container-fluid">
+            <!-- 左上logo -->
+            <a class="navbar-brand" href="/index.php"><img src="./img/pslogo.png" width="40px"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
             </button>
-        </a>
-        <a href="./front/login.php">
-            <button type="button" class="btn btn-secondary">
-                登入
-            </button>
-        </a>
-        
-        <!-- nav end -->
-    </div>
-</nav>
+            <!-- nav start -->
+            <div class="collapse navbar-collapse " id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <?php $rows = $Nav->all(); ?>
+                    <?php foreach($rows as $row_main): ?>
+                        <?php if($row_main["sh"] == 1 && $row_main["main_id"] == 0): ?>
+                        <!-- 副選單 -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown"><?= $row_main["text"] ?></a>
+                            <ul class="dropdown-menu">
+                                <?php foreach($rows as $row_sub): ?>
+                                    <?php if($row_sub["sh"] == 1 && $row_main["id"] == $row_sub["main_id"]): ?>
+                                    <li><a class="dropdown-item" href="<?= $row_sub["url"] ?>>"><?= $row_sub["text"] ?></a></li>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </ul>
+                        </li>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                                    
+                    <button type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-sort-by-attributes"></span>
+                    </button>
+                </ul>
+            </div>
+            <a href="/back.php">
+                <button type="button" class="btn btn-secondary">
+                    後台
+                </button>
+            </a>
+            <a href="./front/login.php">
+                <button type="button" class="btn btn-secondary">
+                    登入
+                </button>
+            </a>
+                                    
+            <!-- nav end -->
+        </div>
+    </nav>
 <?php
 $rows = $Carousel->all();
 //用來計算哪個sh=1的id最小，剛進網頁active它

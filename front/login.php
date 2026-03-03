@@ -23,17 +23,22 @@
             background-color: aliceblue;
             width: 612px;
             height: 40vh;
-            margin-top: 100px;
+            margin-top: 143px;
         }
 
-        input {
+        .input-email, .input-pw {
             width: 290px;
             height: 39px;
         }
 
+        .span-pw {
+            width: 67px;
+            padding-left: 16px;
+        }
+
         .login-inputs {
             margin-left: 118px;
-            padding-top: 60px;
+            padding-top: 10px;
         }
 
         .input-group {
@@ -50,19 +55,79 @@
             width: 160px;
         }
 
+        #nav1 {
+            max-height: 40px;
+        }
+        
+        #nav2 {
+            margin-top: 40px;
+        }
+
+        .error {
+            padding: 20px 0 0 235px;
+            color: red;
+        }
+
+        .login-header {
+            padding:40px 0 0 236px;
+        }
     </style>
 </head>
 <body>
+    <?php
+        include "../api/db.php";
+    ?>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" id="nav1">
+        <div class="container-fluid con-logo justify-content-end">
+            <a class="navbar-brand logo" href="#">SONY</a>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-sm bg-white navbar-white fixed-top shadow" id="nav2">
+        <div class="container-fluid">
+           <!-- 左上logo -->
+           <a class="navbar-brand" href="/index.php"><img src="../img/pslogo.png" width="40px"></a>
+           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+               <span class="navbar-toggler-icon"></span>
+           </button>
+           <!-- nav start -->
+           <div class="collapse navbar-collapse " id="collapsibleNavbar">
+               <ul class="navbar-nav">
+                   <?php $rows = $Nav->all(); ?>
+                   <?php foreach($rows as $row_main): ?>
+                       <?php if($row_main["sh"] == 1 && $row_main["main_id"] == 0): ?>
+                       <!-- 副選單 -->
+                       <li class="nav-item dropdown">
+                           <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown"><?= $row_main["text"] ?></a>
+                           <ul class="dropdown-menu">
+                               <?php foreach($rows as $row_sub): ?>
+                                   <?php if($row_sub["sh"] == 1 && $row_main["id"] == $row_sub["main_id"]): ?>
+                                   <li><a class="dropdown-item" href="<?= $row_sub["url"] ?>>"><?= $row_sub["text"] ?></a></li>
+                                   <?php endif; ?>
+                               <?php endforeach; ?>
+                           </ul>
+                       </li>
+                       <?php endif; ?>
+                   <?php endforeach; ?>
+
+                   <button type="button" class="btn btn-default">
+                       <span class="glyphicon glyphicon-sort-by-attributes"></span>
+                   </button>
+               </ul>
+           </div>
+           <!-- nav end -->
+        </div>
+    </nav>
     <div class="container rounded shadow-lg">
-        <form class="login-inputs" action="./api/login.php" method="post">
+        <h2 class="login-header">會員登入</h2>
+        <form class="login-inputs" action="../api/login.php" method="post">
             <div class="input-group">
-                <span class="input-group-text">帳號</span>
-                <input type="text" name="acc">
+                <span class="input-group-text span-email">Email</span>
+                <input class="input-email" type="text" name="email">
             </div>
 
             <div class="input-group">
-                <span class="input-group-text">密碼</span>
-                <input type="password" name="pw">
+                <span class="input-group-text span-pw">密碼</span>
+                <input class="input-pw" type="password" name="pw">
             </div>
             <div class="login-btn d-flex justify-content-around">
                 <div class="btn-group">
@@ -73,6 +138,9 @@
                 </div>
             </div>
         </form>
+        <?php if(!empty($_GET["error"])): ?>
+            <p class="error">Email或密碼錯誤</p>
+        <?php endif; ?>
     </div>
 </body>
 </html>

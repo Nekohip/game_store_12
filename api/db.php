@@ -66,9 +66,25 @@ Class DB
         $sql = "DELETE FROM `$this->table` WHERE `id` = {$row['id']}";
         return $this->pdo->exec($sql);
     }
+
+    public function count($row)
+    {
+        session_start();
+        $sql = "SELECT count(*) FROM `$this->table` WHERE ";
+        $tmp = $this->array_to_sql($row);
+        $sql .= join("AND", $tmp);
+        return $this->pdo->query($sql)->fetchColumn();
+    }
+
+    public function find($row)
+    {
+        $sql = "SELECT * FROM `$this->table` WHERE `email` = '{$row["email"]}'";
+        return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
+    }
 }
 
 $Carousel = new DB("carousel");
 $Boxes = new DB("boxes");
 $Nav = new DB("nav");
+$Member = new DB("member");
 ?>
