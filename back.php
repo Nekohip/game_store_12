@@ -47,7 +47,8 @@
         }
 
         .nav-item {
-            margin-top: 5px;
+            margin: 6px 0 0 20px;
+            width: 200px;
         }
 
         .btn {
@@ -60,6 +61,20 @@
     
         #nav2 {
             margin-top: 40px;
+        }
+
+        .welcome {
+            margin: 6px 20px 0 0;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .switch-btn {
+            margin-left: 10px;
+        }
+
+        .nav {
+            margin-top: 10px;
         }
         
     </style>
@@ -85,8 +100,16 @@
                 </button>
             </ul>
         </div>
-        <a href="/index.php">
+
+        <p class="welcome"><?= $_SESSION["mem"] ?> 已登入</p>
+        <a href="./api/logout.php">
             <button type="button" class="btn btn-secondary">
+                登出
+            </button>
+        </a>
+
+        <a href="/index.php">
+            <button type="button" class="btn btn-secondary switch-btn">
                 前台
             </button>
         </a>
@@ -99,18 +122,26 @@
         <div class="d-flex flex-column flex-shrink-0 position-fixed start-0 sidebar shadow">
             <ul class="nav nav-pills d-flex flex-column">
                 <li class="nav-item">
-                    <a href="?do=carousel" class="btn btn-outline-primary w-100">
+                    <a href="?do=carousel" class="btn btn-primary w-100">
                         Carousel
                     </a>
                 </li>
+
                 <li class="nav-item">
-                    <a href="?do=boxes" class="btn btn-outline-primary w-100">
+                    <a href="?do=boxes" class="btn btn-primary w-100">
                         Boxes
                     </a>
                 </li>
+
                 <li class="nav-item">
-                    <a href="?do=nav" class="btn btn-outline-primary w-100">
+                    <a href="?do=nav" class="btn btn-primary w-100">
                         Nav
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="?do=member" class="btn btn-primary w-100">
+                        Members
                     </a>
                 </li>
             </ul>
@@ -131,6 +162,9 @@
                             break;
                         case "nav" :
                             include "./back/nav.php";
+                            break;
+                        case "member" :
+                            include "./back/member.php";
                             break;
                     }
                 }

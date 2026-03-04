@@ -47,21 +47,38 @@ if($_GET['do'] == "nav")
         }
     }
 }
+else if($_GET['do'] == "member")
+{
+    $_POST["admin"] = isset($_POST["admin"]) ? 1 : 0;
+    if(!empty($_POST["id"]))
+    {
+        $table->update($_POST);
+        //檢查用
+        // $sql = $table->update($_POST);
+        // echo $sql;
+    }
+    else
+    {
+        $table->insert($_POST);
+        // $sql = $table->insert($_POST);
+        // echo $sql;
+    }   
+}
 else
 {
     $_POST["sh"] = isset($_POST["sh"]) ? 1 : 0;
     if(!empty($_POST["id"]))
     {
-        // $table->update($_POST);
+        $table->update($_POST);
         //檢查用
-        $sql = $table->update($_POST);
-        echo $sql;
+        // $sql = $table->update($_POST);
+        // echo $sql;
     }
     else
     {
-        // $table->insert($_POST);
-        $sql = $table->insert($_POST);
-        echo $sql;
+        $table->insert($_POST);
+        // $sql = $table->insert($_POST);
+        // echo $sql;
     }   
 }
 header("location:../back.php?do=" . $_GET["do"]);

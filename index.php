@@ -89,6 +89,16 @@
             display: flex;
             justify-content: space-around;
         }
+
+        .welcome {
+            margin: 6px 20px 0 0;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .switch-btn {
+            margin-left: 10px;
+        }
     </style>
 </head>
 
@@ -133,11 +143,7 @@ include "./api/db.php";
                     </button>
                 </ul>
             </div>
-            <a href="/back.php">
-                <button type="button" class="btn btn-secondary">
-                    後台
-                </button>
-            </a>
+
             <?php if(empty($_SESSION["mem"])): ?>
                 <a href="./front/login.php">
                     <button type="button" class="btn btn-secondary">
@@ -146,12 +152,20 @@ include "./api/db.php";
                 </a>
             <?php else: ?>
                 <p class="welcome"><?= $_SESSION["mem"] ?> 已登入</p>
-                <a href="./front/logout.php">
+                <a href="./api/logout.php">
                     <button type="button" class="btn btn-secondary">
                         登出
                     </button>
                 </a>
-            <?php endif; ?>                
+            <?php endif; ?>
+            
+            <?php if(!empty($_SESSION["mem"]) && $_SESSION["mem"] == "admin"): ?>
+            <a href="/back.php">
+                <button type="button" class="btn btn-secondary switch-btn">
+                    後台
+                </button>
+            </a>
+            <?php endif; ?>
             <!-- nav end -->
         </div>
     </nav>

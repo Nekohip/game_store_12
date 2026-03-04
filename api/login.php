@@ -4,7 +4,14 @@ if($Member->count($_POST))
 {
     $row = $Member->find($_POST);
     $_SESSION["mem"] = $row["name"];
-    header("location:../index.php");
+    if($_SESSION["mem"] == "admin")
+    {
+        header("location:../back.php");
+    }
+    else
+    {
+        header("location:../index.php");
+    }
 }
 else 
 {
