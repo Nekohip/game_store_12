@@ -59,7 +59,6 @@ Class DB
         // 檢查用
         // return $sql;
         return $this->pdo->exec($sql);
-
     }
 
     public function del($row)

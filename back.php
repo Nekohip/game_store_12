@@ -80,6 +80,12 @@
     </style>
 </head>
 <body>
+<?php
+    if($_SESSION["mem"] != "admin")
+    {
+        header("location:./front/login.php");
+    }
+?>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" id="nav1">
         <div class="container-fluid con-logo justify-content-end">
             <a class="navbar-brand logo" href="#">SONY</a>

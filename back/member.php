@@ -26,12 +26,7 @@
         .content {
             font-size: 20px;
             font-weight: bold;
-            margin-top: -40px;
-        }
-
-        .btns {
-            float: right;
-            /* width: 26%; */
+            margin-top: 10px;
         }
 
         .modal-text {
@@ -41,7 +36,7 @@
         }
 
         .cards {
-            margin: 32px 1px 0px 424px;
+            margin: 32px 1px 0px 492px;
         }
 
         .title{
@@ -50,6 +45,15 @@
         }
         .sub {
             margin-top: 0px;
+        }
+        .delBtn {
+            margin: 10px 0 0 340px;
+        }
+        .modal-btns {
+            margin-left: 346px;
+        }
+        .text-input {
+            margin-left: 11px;
         }
     </style>
 </head>
@@ -61,26 +65,34 @@
     <div class="d-flex justify-content-around title">
         <h4>Members</h4>
         <button class="btn btn-primary editBtn">新增+</button>
-        <input type="submit" form="memForm" value="儲存全部" class="btn btn-primary"></button>
+        <input type="submit" form="memForm" value="儲存全部" class="btn btn-primary">
     </div>
     <div class="row">
         <form id="memForm" action="../api/edit.php?do=member" method="post">
         <?php foreach($rows as $row): ?>
-            <div class="col-6 cards shadow-lg">
-                <input type="hidden" name="id" value="<?= $row["id"] ?>"><br>
+            <div class="col-4 cards shadow-lg">
+                <input type="hidden" name="<?= $i ?>[id]" value="<?= $row["id"] ?>"><br>
 
-                <lable class="content">Email:</lable>
-                <input type="text" name="email" value="<?= $row["email"] ?>"><br>
+                <div class="content">
+                    <lable>Email:</lable>
+                    <input type="text" name="<?= $i ?>[email]" value="<?= $row["email"] ?>"><br>
+                </div>
 
-                <lable class="content">名稱:</lable>
-                <input type="text" name="name" value="<?= $row["name"] ?>"><br>
+                <div class="content">
+                    <lable>暱稱:</lable>
+                    <input class="text-input" type="text" name="<?= $i ?>[name]" value="<?= $row["name"] ?>"><br>
+                </div>
 
-                <lable class="content">密碼:</lable>
-                <input type="password" name="pw" value="<?= $row["pw"] ?>"><br>
+                <div class="content">
+                    <lable>密碼:</lable>
+                    <input class="text-input" type="password" name="<?= $i ?>[pw]" value="<?= $row["pw"] ?>"><br>
+                </div>
 
-                <label class="modal-text">管理員:</label>
-                <input type="checkbox" name="admin" style="width:21px; height:21px" 
-                       value="1" <?= $row["admin"] == 1 ? "checked" : ""?>><br>
+                <div class="content">
+                    <label class="modal-text">管理員:</label>
+                    <input type="checkbox" name="<?= $i ?>[admin]" style="width:21px; height:21px" 
+                           value="1" <?= $row["admin"] == 1 ? "checked" : ""?>><br>
+                </div>
 
                 <button type="button"
                         class="btn btn-danger delBtn"
@@ -88,9 +100,9 @@
                         data-bs-text="<?= $row["name"] ?>">
                         移除會員
                 </button>
-                </div>  
             </div>
-        <?php endforeach ?>
+            <?php $i++; ?>
+        <?php endforeach; ?>
         </form>
     </div>
     <div class="modal editModal">
@@ -102,16 +114,22 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="../api/edit.php?do=nav" method="post">
+                    <form action="../api/edit.php?do=member" method="post">
 
-                        <label for="modalText" class="modal-text">主選單:</label>
-                        <input type="text" id="modalText" name="text" value=""><br>
+                        <label for="modalText" class="modal-text">Email:</label>
+                        <input type="text" id="modalText" name="email" value=""><br>
+
+                        <label for="modalText" class="modal-text">暱稱:</label>
+                        <input type="text" id="modalText" name="name" value=""><br>
+
+                        <label for="modalText" class="modal-text">密碼:</label>
+                        <input type="password" id="modalText" name="pw" value=""><br>
 
                         <label class="modal-text">管理員:</label>
                         <input type="checkbox" name="admin" 
                                style="width:21px; height:21px" value="1" checked><br>
 
-                        <div class="content btns">
+                        <div class="modal-btns">
                             <button type="button" class="btn btn-light dismiss">取消</button>
                             <input type="submit" class="btn btn-primary" value="確定"></button>
                         </div>
@@ -136,7 +154,7 @@
                         <label for="delModalText" class="modal-text">確定要移除</label>
                         <input type="text" id="delText" name="text" value="" readonly>？<br>
 
-                        <div class="content btns">
+                        <div class="modal-btns">
                             <input type="submit" class="btn btn-danger" value="確定"></button>
                             <button type="button" class="btn btn-light delDismiss">取消</button>
                         </div>

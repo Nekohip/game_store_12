@@ -26,18 +26,20 @@
         .content {
             font-size: 20px;
             font-weight: bold;
-            margin-top: -40px;
+            margin-top: 10px;
         }
 
         .btns {
-            float: right;
-            /* width: 26%; */
+            margin-left: 429px;
         }
 
         .modal-text {
             font-size: 20px;
             font-weight: bold;
             margin-top: 15px;
+        }
+        .modal-btns {
+            margin-left: 346px;
         }
 
         .cards {
@@ -49,7 +51,7 @@
             margin-left: 621px;
         }
         .sub {
-            margin-top: 0px;
+            margin-top: 26px;
         }
     </style>
 </head>
@@ -61,47 +63,57 @@
     <div class="d-flex justify-content-around title">
         <h4>Nav</h4>
         <button class="btn btn-primary editBtn">新增+</button>
-        <input type="submit" form="navForm" value="儲存全部" class="btn btn-primary"></button>
+        <input type="submit" form="navForm" value="儲存全部" class="btn btn-primary">
     </div>
     <div class="row">
         <form id="navForm" action="../api/edit.php?do=nav" method="post">
         <?php foreach($rows as $row_main): ?>
             <?php if($row_main["main_id"] == 0):?>
                 <div class="col-6 cards shadow-lg">
-                    <lable class="content">主選單:</lable>
-                    <input type="hidden" name="<?= $i ?>[id]" value="<?= $row_main["id"] ?>">
-                    <input type="text" name="<?= $i ?>[text]" value="<?= $row_main["text"] ?>">
+                    <div class="content">
+                        <lable class="content">主選單:</lable>
+                        <input type="hidden" name="<?= $i ?>[id]" value="<?= $row_main["id"] ?>">
+                        <input type="text" name="<?= $i ?>[text]" value="<?= $row_main["text"] ?>">
+                    </div>
 
-                    <label class="modal-text">顯示:</label>
-                    <input type="checkbox" name="<?= $i ?>[sh]" 
-                           style="width:21px; height:21px" value="1" <?= $row_main["sh"] == 1 ? "checked" : ""?>><br>
-
-                    <lable class="content">副選單:</lable><br>
-                        <?php foreach($rows as $row_sub): ?>
-                            <?php if($row_sub["main_id"] == $row_main["id"]): ?>
-                                <div class="sub">
+                    <div class="content">
+                        <label class="modal-text">顯示:</label>
+                        <input type="checkbox" name="<?= $i ?>[sh]" style="width:21px; height:21px" 
+                               value="1" <?= $row_main["sh"] == 1 ? "checked" : ""?>><br>
+                    </div>
+                    <div class="sub">
+                        <lable class="content">副選單:</lable><br>
+                            <?php foreach($rows as $row_sub): ?>
+                                <?php if($row_sub["main_id"] == $row_main["id"]): ?>
                                     <input type="hidden" name="<?= $i ?>[id]" value="<?= $row_sub["id"] ?>">
                                     <input type="hidden" name="<?= $i ?>[main_id]" value="<?= $row_sub["main_id"] ?>">
+
+                                    <div class="content">
                                     <label>名稱:</label>
-                                    <input type="text" name="<?= $i ?>[text]" value="<?= $row_sub["text"] ?>"><br>
-                                    <label>URL:</label>
-                                    <input type="text" name="<?= $i ?>[url]" value="<?= $row_sub["url"] ?>">
-
-                                    <label class="modal-text">顯示:</label>
-                                    <input type="checkbox" name="<?= $i ?>[sh]" 
-                                           style="width:21px; height:21px" value="1" <?= $row_sub["sh"] == 1 ? "checked" : ""?>>
-
-                                    <button type="button"
-                                            class="btn btn-danger delBtn"
-                                            data-bs-id="<?= $row_sub["id"] ?>"
-                                            data-bs-text="<?= $row_sub["text"] ?>">
-                                            刪除
-                                    </button>
-                                </div><br>
-                            <?php endif ?>
-                        <?php $i++; endforeach; ?>
+                                        <input type="text" name="<?= $i ?>[text]" value="<?= $row_sub["text"] ?>"><br>
+                                    </div>
+                                    <div class="content">
+                                        <label>URL:</label>
+                                        <input type="text" name="<?= $i ?>[url]" value="<?= $row_sub["url"] ?>">
+                                    </div>
+                                    <div class="content">
+                                        <label class="modal-text">顯示:</label>
+                                        <input type="checkbox" name="<?= $i ?>[sh]" style="width:21px; height:21px" 
+                                               value="1" <?= $row_sub["sh"] == 1 ? "checked" : ""?>>
+                                    
+                                        <button type="button"
+                                                class="btn btn-danger delBtn"
+                                                data-bs-id="<?= $row_sub["id"] ?>"
+                                                data-bs-text="<?= $row_sub["text"] ?>">
+                                                刪除
+                                        </button>
+                                    </div>
+                                
+                                <?php endif ?>
+                            <?php $i++; endforeach; ?>
+                        </div><br>
                     
-                    <div class="content btns">
+                    <div class="btns">
                         <button type="submit"
                                 class="btn btn-secondary subBtn" 
                                 form="navForm" 
@@ -139,7 +151,7 @@
                         <input type="checkbox" name="sh" 
                                style="width:21px; height:21px" value="1" checked><br>
 
-                        <div class="content btns">
+                        <div class="modal-btns">
                             <button type="button" class="btn btn-light dismiss">取消</button>
                             <input type="submit" class="btn btn-primary" value="確定"></button>
                         </div>
@@ -164,7 +176,7 @@
                         <label for="delModalText" class="modal-text">確定要刪除</label>
                         <input type="text" id="delText" name="text" value="" readonly>？<br>
 
-                        <div class="content btns">
+                        <div class="modal-btns">
                             <input type="submit" class="btn btn-danger" value="確定"></button>
                             <button type="button" class="btn btn-light delDismiss">取消</button>
                         </div>

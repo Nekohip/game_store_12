@@ -49,20 +49,25 @@ if($_GET['do'] == "nav")
 }
 else if($_GET['do'] == "member")
 {
-    $_POST["admin"] = isset($_POST["admin"]) ? 1 : 0;
-    if(!empty($_POST["id"]))
-    {
-        $table->update($_POST);
-        //檢查用
-        // $sql = $table->update($_POST);
-        // echo $sql;
+    foreach($_POST as &$row)
+    {   
+        //修改選單時二維
+        if(is_array($row))
+        {
+            $row["admin"] = isset($row["admin"]) ? 1 : 0;
+            $table->update($row);
+            // 檢查用
+            // $sql = $table->update($row);
+            // echo $sql;
+            
+        }
+        //新增選單時是一維
+        else
+        {
+            $table->insert($_POST);
+            break;
+        }
     }
-    else
-    {
-        $table->insert($_POST);
-        // $sql = $table->insert($_POST);
-        // echo $sql;
-    }   
 }
 else
 {
