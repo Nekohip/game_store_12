@@ -118,23 +118,34 @@
         </div>
     </nav>
     <div class="container rounded shadow-lg">
-        <h2 class="login-header">會員登入</h2>
-        <form class="login-inputs" action="../api/login.php" method="post">
+        <h2 class="login-header">會員註冊</h2>
+        <form class="login-inputs" action="../api/edit.php" method="post" id="regForm">
             <div class="input-group">
                 <span class="input-group-text span-email">Email</span>
-                <input class="input-email" type="text" name="email">
+                <input class="input-email" type="text" name="email" id="email">
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-text span-email">暱稱</span>
+                <input class="input-name" type="text" name="name">
             </div>
 
             <div class="input-group">
                 <span class="input-group-text span-pw">密碼</span>
-                <input class="input-pw" type="password" name="pw">
+                <input class="input-pw" type="password" name="pw" id="pw">
             </div>
+
+            <div class="input-group">
+                <span class="input-group-text span-pw">確認密碼</span>
+                <input class="input-pw2" type="password" id="pw2">
+            </div>
+
             <div class="login-btn d-flex justify-content-around">
                 <div class="btn-group">
-                    <button type="submit" class="btn btn-primary">登入</button>
+                    <button class="btn btn-primary" id="regBtn">註冊</button>
                 </div>
                 <div class="btn-group">
-                    <a href="./register.php" class="btn btn-secondary">註冊</a>
+                    <button type="./login.php" class="btn btn-secondary">返回</button>
                 </div>
             </div>
         </form>
@@ -143,4 +154,16 @@
         <?php endif; ?>
     </div>
 </body>
+<script>
+    $(document).ready(function()
+    {
+        $("#regBtn").onclick(function()
+        {
+            if($("#pw") == $("#pw2"))
+            {
+                $("#regForm").submit();
+            }
+        });
+    });
+</script>
 </html>
