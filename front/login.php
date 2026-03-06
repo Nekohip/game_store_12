@@ -26,14 +26,14 @@
             margin-top: 143px;
         }
 
-        .input-email, .input-pw {
-            width: 290px;
-            height: 39px;
+        .span-email {
+            width: 90px;
+            padding-left: 23px;
         }
 
         .span-pw {
-            width: 67px;
-            padding-left: 16px;
+            width: 90px;
+            padding-left: 26px;
         }
 
         .login-inputs {
@@ -48,7 +48,7 @@
 
         .login-btn {
             width: 346px;
-            margin-top: 20px;
+            margin: 20px 0 0 10px;
         }
 
         .login-btn>div {
@@ -70,6 +70,11 @@
 
         .login-header {
             padding:40px 0 0 236px;
+        }
+
+        input {
+            width: 280px;
+            height: 39px;
         }
     </style>
 </head>
@@ -122,7 +127,7 @@
         <form class="login-inputs" action="../api/login.php" method="post">
             <div class="input-group">
                 <span class="input-group-text span-email">Email</span>
-                <input class="input-email" type="text" name="email">
+                <input class="input-email" type="email" name="email">
             </div>
 
             <div class="input-group">

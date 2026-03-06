@@ -70,8 +70,16 @@ Class DB
     public function count($row)
     {
         $sql = "SELECT count(*) FROM `$this->table` WHERE ";
-        $tmp = $this->array_to_sql($row);
-        $sql .= join(" AND ", $tmp);
+        if(is_array($row))
+        {
+            $tmp = $this->array_to_sql($row);
+            $sql .= join(" AND ", $tmp);
+        }
+        else
+        {
+            $sql .= "`email` = '$row'";
+        }
+        
         return $this->pdo->query($sql)->fetchColumn();
     }
 

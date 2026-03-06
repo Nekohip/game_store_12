@@ -22,18 +22,13 @@
         .container {
             background-color: aliceblue;
             width: 612px;
-            height: 40vh;
+            height: 48vh;
             margin-top: 143px;
         }
 
-        .input-email, .input-pw {
-            width: 290px;
+        input {
+            width: 280px;
             height: 39px;
-        }
-
-        .span-pw {
-            width: 67px;
-            padding-left: 16px;
         }
 
         .login-inputs {
@@ -48,7 +43,7 @@
 
         .login-btn {
             width: 346px;
-            margin-top: 20px;
+            margin: 20px 0 0 10px;
         }
 
         .login-btn>div {
@@ -64,12 +59,24 @@
         }
 
         .error {
-            padding: 20px 0 0 235px;
+            padding: 20px 0 0 135px;
             color: red;
         }
 
         .login-header {
             padding:40px 0 0 236px;
+        }
+        .span-email {
+            width: 90px;
+            padding-left: 23px;
+        }
+        .span-name {
+            width: 90px;
+            padding-left: 26px;
+        }
+        .span-pw {
+            width: 90px;
+            padding-left: 26px;
         }
     </style>
 </head>
@@ -119,49 +126,56 @@
     </nav>
     <div class="container rounded shadow-lg">
         <h2 class="login-header">會員註冊</h2>
-        <form class="login-inputs" action="../api/edit.php" method="post" id="regForm">
+        <form class="login-inputs" action="../api/check_acc.php?do=member" method="post" id="regForm">
             <div class="input-group">
                 <span class="input-group-text span-email">Email</span>
-                <input class="input-email" type="text" name="email" id="email">
+                <input class="input-email" type="email" name="email" id="email" required>
             </div>
 
             <div class="input-group">
-                <span class="input-group-text span-email">暱稱</span>
-                <input class="input-name" type="text" name="name">
+                <span class="input-group-text span-name">暱稱</span>
+                <input class="input-name" type="text" name="name" required>
             </div>
 
             <div class="input-group">
                 <span class="input-group-text span-pw">密碼</span>
-                <input class="input-pw" type="password" name="pw" id="pw">
+                <input class="input-pw" type="password" name="pw" id="pw" required>
             </div>
 
             <div class="input-group">
-                <span class="input-group-text span-pw">確認密碼</span>
-                <input class="input-pw2" type="password" id="pw2">
+                <span class="input-group-text span-pw2">確認密碼</span>
+                <input class="input-pw2" type="password" id="pw2" required>
             </div>
+
+            <?php if(isset($_GET["error"]) && $_GET["error"] == 1): ?>
+                <p class="error">此Email已被註冊</p>
+            <?php else: ?>
+                <p class="error" id="error"></p>
+            <?php endif ?>
 
             <div class="login-btn d-flex justify-content-around">
                 <div class="btn-group">
-                    <button class="btn btn-primary" id="regBtn">註冊</button>
+                    <button type="button" class="btn btn-primary" id="regBtn">註冊</button>
                 </div>
                 <div class="btn-group">
-                    <button type="./login.php" class="btn btn-secondary">返回</button>
+                    <a href="./login.php" class="btn btn-secondary">返回</a>
                 </div>
             </div>
         </form>
-        <?php if(!empty($_GET["error"])): ?>
-            <p class="error">Email或密碼錯誤</p>
-        <?php endif; ?>
     </div>
 </body>
 <script>
     $(document).ready(function()
     {
-        $("#regBtn").onclick(function()
+        $("#regBtn").click(function()
         {
-            if($("#pw") == $("#pw2"))
+            if($("#pw").val() == $("#pw2").val())
             {
                 $("#regForm").submit();
+            }
+            else
+            {
+                $("#error").append("密碼不一致");
             }
         });
     });
