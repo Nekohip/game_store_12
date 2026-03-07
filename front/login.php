@@ -37,7 +37,7 @@
         }
 
         .login-inputs {
-            margin-left: 118px;
+            margin-left: 105px;
             padding-top: 10px;
         }
 
@@ -143,8 +143,10 @@
                 </div>
             </div>
         </form>
-        <?php if(!empty($_GET["error"])): ?>
+        <?php if(!empty($_GET["error"]) && $_GET["error"] == 1): ?>
             <p class="error">Email或密碼錯誤</p>
+        <?php elseif(!empty($_GET["regOk"]) && $_GET["regOk"] == 1): ?>
+            <p class="error">註冊成功，請重新登入</p>
         <?php endif; ?>
     </div>
 </body>

@@ -32,7 +32,7 @@
         }
 
         .login-inputs {
-            margin-left: 118px;
+            margin-left: 105px;
             padding-top: 10px;
         }
 
@@ -126,7 +126,7 @@
     </nav>
     <div class="container rounded shadow-lg">
         <h2 class="login-header">會員註冊</h2>
-        <form class="login-inputs" action="../api/check_acc.php?do=member" method="post" id="regForm">
+        <form class="login-inputs" action="../api/edit.php?do=member" method="post" id="regForm">
             <div class="input-group">
                 <span class="input-group-text span-email">Email</span>
                 <input class="input-email" type="email" name="email" id="email" required>
@@ -147,7 +147,7 @@
                 <input class="input-pw2" type="password" id="pw2" required>
             </div>
 
-            <?php if(isset($_GET["error"]) && $_GET["error"] == 1): ?>
+            <?php if(isset($_GET["error"]) && $_GET["error"] == 2): ?>
                 <p class="error">此Email已被註冊</p>
             <?php else: ?>
                 <p class="error" id="error"></p>
@@ -155,7 +155,7 @@
 
             <div class="login-btn d-flex justify-content-around">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-primary" id="regBtn">註冊</button>
+                    <button type="submit" class="btn btn-primary" id="regBtn">註冊</button>
                 </div>
                 <div class="btn-group">
                     <a href="./login.php" class="btn btn-secondary">返回</a>
@@ -167,14 +167,12 @@
 <script>
     $(document).ready(function()
     {
-        $("#regBtn").click(function()
+        $("#regForm").on("submit", function(e)
         {
-            if($("#pw").val() == $("#pw2").val())
+            if($("#pw").val() != $("#pw2").val())
             {
-                $("#regForm").submit();
-            }
-            else
-            {
+                e.preventDefault();
+                $("#error").empty();
                 $("#error").append("密碼不一致");
             }
         });

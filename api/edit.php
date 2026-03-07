@@ -59,13 +59,21 @@ else if($_GET['do'] == "member")
             // 檢查用
             // $sql = $table->update($row);
             // echo $sql;
-            
         }
         //新增選單時是一維
         else
         {
-            $table->insert($_POST);
-            break;
+            if($Member->count($_POST["email"]) == 1)
+            {
+                header("location:../front/register.php?error=2");
+                exit();
+            }
+            else
+            {
+                $table->insert($_POST);
+                header("location:../front/login.php?regOk=1");
+            }
+            
         }
     }
 }
