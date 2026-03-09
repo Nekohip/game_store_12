@@ -127,7 +127,7 @@
 
                         <label class="modal-text">管理員:</label>
                         <input type="checkbox" name="admin" 
-                               style="width:21px; height:21px" value="1" checked><br>
+                               style="width:21px; height:21px" value="1"><br>
 
                         <div class="modal-btns">
                             <button type="button" class="btn btn-light dismiss">取消</button>
