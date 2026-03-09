@@ -18,11 +18,11 @@ if(!empty($_FILES))
 
 if($_GET['do'] == "nav")
 {
-    foreach($_POST as &$row)
-    {   
-        //修改選單時二維
-        if(is_array($row))
-        {
+    if(is_array(reset($_POST)))
+    {
+        foreach($_POST as &$row)
+        {   
+            //修改選單時二維
             $row["sh"] = isset($row["sh"]) ? 1 : 0;
             if(!empty($row["id"]))
             {
@@ -39,12 +39,11 @@ if($_GET['do'] == "nav")
                 // echo $sql;
             } 
         }
-        //新增選單時是一維
-        else
-        {
-            $table->insert($_POST);
-            break;
-        }
+    }
+    //新增選單時是一維
+    else
+    {
+        $table->insert($_POST);
     }
 }
 else if($_GET['do'] == "member")
@@ -53,16 +52,12 @@ else if($_GET['do'] == "member")
     {
         foreach($_POST as &$row)
         {   
-        //修改時二維
-            if(is_array($row))
-            {
-                $row["admin"] = isset($row["admin"]) ? 1 : 0;
-                $table->update($row);
-                // 檢查用
-                // $sql = $table->update($row);
-                // echo $sql;
-            }
-        
+            //修改時二維
+            $row["admin"] = isset($row["admin"]) ? 1 : 0;
+            $table->update($row);
+            // 檢查用
+            // $sql = $table->update($row);
+            // echo $sql;
         }
     }
     else
