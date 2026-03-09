@@ -81,7 +81,7 @@
 </head>
 <body>
 <?php
-    if($_SESSION["mem"] != "admin")
+    if($_SESSION["admin"] != 1)
     {
         header("location:./front/login.php");
     }

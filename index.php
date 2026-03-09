@@ -159,7 +159,7 @@ include "./api/db.php";
                 </a>
             <?php endif; ?>
             
-            <?php if(!empty($_SESSION["mem"]) && $_SESSION["mem"] == "admin"): ?>
+            <?php if(!empty($_SESSION["admin"]) && $_SESSION["admin"] == 1): ?>
             <a href="/back.php">
                 <button type="button" class="btn btn-secondary switch-btn">
                     後台

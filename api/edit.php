@@ -49,32 +49,37 @@ if($_GET['do'] == "nav")
 }
 else if($_GET['do'] == "member")
 {
-    foreach($_POST as &$row)
-    {   
-        //修改選單時二維
-        if(is_array($row))
-        {
-            $row["admin"] = isset($row["admin"]) ? 1 : 0;
-            $table->update($row);
-            // 檢查用
-            // $sql = $table->update($row);
-            // echo $sql;
+    if(is_array(reset($_POST)))
+    {
+        foreach($_POST as &$row)
+        {   
+        //修改時二維
+            if(is_array($row))
+            {
+                $row["admin"] = isset($row["admin"]) ? 1 : 0;
+                $table->update($row);
+                // 檢查用
+                // $sql = $table->update($row);
+                // echo $sql;
+            }
+        
         }
-        //新增選單時是一維
+    }
+    else
+    {
+        //新增時是一維
+        if($Member->count($_POST["email"]) == 1)
+        {
+            header("location:../front/register.php?error=2");
+            exit();
+        }
         else
         {
-            if($Member->count($_POST["email"]) == 1)
-            {
-                header("location:../front/register.php?error=2");
-                exit();
-            }
-            else
-            {
-                $table->insert($_POST);
-                header("location:../front/login.php?regOk=1");
-            }
-            
+            $table->insert($_POST);
+            header("location:../front/login.php?regOk=1");
+            exit();
         }
+        
     }
 }
 else

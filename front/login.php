@@ -127,12 +127,12 @@
         <form class="login-inputs" action="../api/login.php" method="post">
             <div class="input-group">
                 <span class="input-group-text span-email">Email</span>
-                <input class="input-email" type="email" name="email">
+                <input class="input-email" type="email" name="email" required>
             </div>
 
             <div class="input-group">
                 <span class="input-group-text span-pw">密碼</span>
-                <input class="input-pw" type="password" name="pw">
+                <input class="input-pw" type="password" name="pw" required>
             </div>
             <div class="login-btn d-flex justify-content-around">
                 <div class="btn-group">

@@ -4,8 +4,9 @@ if($Member->count($_POST))
 {
     $row = $Member->find($_POST);
     $_SESSION["mem"] = $row["name"];
-    if($_SESSION["mem"] == "admin")
+    if($row["admin"] == 1)
     {
+        $_SESSION["admin"] = 1;
         header("location:../back.php");
     }
     else
