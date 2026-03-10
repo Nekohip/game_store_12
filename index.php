@@ -130,7 +130,7 @@ include "./api/db.php";
                             <ul class="dropdown-menu">
                                 <?php foreach($rows as $row_sub): ?>
                                     <?php if($row_sub["sh"] == 1 && $row_main["id"] == $row_sub["main_id"]): ?>
-                                    <li><a class="dropdown-item" href="<?= $row_sub["url"] ?>>"><?= $row_sub["text"] ?></a></li>
+                                    <li><a class="dropdown-item" href="<?= $row_sub["url"] ?>"><?= $row_sub["text"] ?></a></li>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
                             </ul>

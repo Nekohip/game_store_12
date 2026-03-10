@@ -23,7 +23,6 @@ if($_GET['do'] == "nav")
         foreach($_POST as &$row)
         {   
             //修改選單時二維
-            $row["sh"] = isset($row["sh"]) ? 1 : 0;
             if(!empty($row["id"]))
             {
                 $table->update($row);
