@@ -61,7 +61,7 @@
         <button class="btn btn-primary editBtn">新增+</button>
     </div>
     <div class="d-flex justify-content-center info">
-        <h6>建議解析度: 大圖1889x703 縮圖565x323</h6>
+        <h6>建議解析度: 大圖1889x703  縮圖565x323  兩者檔名不可重複</h6>
     </div>
     <div class="row">
         <?php foreach($rows as $row): ?>

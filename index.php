@@ -108,13 +108,13 @@ include "./api/db.php";
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" id="nav1">
         <div class="container-fluid con-logo justify-content-end">
-            <a class="navbar-brand logo" href="#">SONY</a>
+            <a class="navbar-brand logo" href="#">SHANG</a>
         </div>
     </nav>
     <nav class="navbar navbar-expand-sm bg-white navbar-white fixed-top shadow" id="nav2">
         <div class="container-fluid">
             <!-- 左上logo -->
-            <a class="navbar-brand" href="/index.php"><img src="./img/pslogo.png" width="40px"></a>
+            <a class="navbar-brand" href="/index.php"><img src="./img/icon/TS.png" width="40px"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -196,8 +196,8 @@ $slideTo = 0;
             <img src="./upload/<?= $row["thumb"]; ?>" class="d-block w-100" alt="thumbnail">
         </button>
         <?php
-        $slideTo++; 
-        endif; 
+            $slideTo++; 
+            endif;
         ?>
     <?php endforeach; ?>
     </div>
@@ -233,7 +233,7 @@ $slideTo = 0;
 ?>
 
 <div class="container-fluid" id="container1">
-    <div class="text"><span>現已推出的精彩PS4和PS5遊戲</span></div>
+    <div class="text"><span>現已推出的精彩遊戲</span></div>
     <!-- row start -->
     <div class="row">
         <?php $rows = $Boxes->all();?>
