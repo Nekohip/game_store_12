@@ -48,7 +48,7 @@
             width: 150px;
         }
         #container1 {
-            height: 100vh;
+            height: 60vh;
             margin: auto;
             background-color: rgba(0, 0, 0, 0.9);
             display: flex;
@@ -218,11 +218,11 @@ $slideTo = 0;
     <!-- Left and right controls/icons -->
     <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
         <!-- <span class="carousel-control-prev-icon"></span> -->
-        <img src="./img/arrow-l.png" alt="arrow" class="d-block" style="width:30%">
+        <img src="./img/icon/arrow-l.png" alt="arrow" class="d-block" style="width:30%">
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
         <!-- <span class="carousel-control-next-icon"></span> -->
-        <img src="./img/arrow-r.png" alt="arrow" class="d-block" style="width:30%">
+        <img src="./img/icon/arrow-r.png" alt="arrow" class="d-block" style="width:30%">
     </button>
 </div>
 <!-- carousel end -->
@@ -241,7 +241,7 @@ $slideTo = 0;
             <?php if($row["sh"] == 1): ?>
                 <div class="col-2">
                     <div class="box1">
-                        <img class="img-fluid " src="./img/<?= $row['img'] ?>">
+                        <img class="img-fluid " src="./upload/<?= $row['img'] ?>">
                     </div>
                     <div class="text-name"><span><?= $row['text']  ?></span></div>
                 </div>
