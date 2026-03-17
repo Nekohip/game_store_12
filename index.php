@@ -114,7 +114,7 @@ include "./api/db.php";
     <nav class="navbar navbar-expand-sm bg-white navbar-white fixed-top shadow" id="nav2">
         <div class="container-fluid">
             <!-- 左上logo -->
-            <a class="navbar-brand" href="/index.php"><img src="./img/icon/TS.png" width="40px"></a>
+            <a class="navbar-brand" href="/index.php"><img src="./img/icon/TS.png" width="50px"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
