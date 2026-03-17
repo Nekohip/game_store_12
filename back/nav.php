@@ -235,7 +235,7 @@
 
         //新增副選單按鈕
         const subBtn = $(".subBtn");
-        let idCount = 40;
+        let idCount = 1;
         subBtn.click(function()
         {
             let thisId = $(this).attr("data-bs-mainId");
