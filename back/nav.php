@@ -116,7 +116,6 @@
                         <div class="btns">
                             <button type="submit"
                                     class="btn btn-secondary subBtn" 
-                                    form="navForm" 
                                     data-bs-mainId="<?= $row_main["id"] ?>">
                                     新增副選單
                             </button>
@@ -245,14 +244,7 @@
 
               <label class="modal-text">顯示:</label>
               <input type="checkbox" name="${idCount}[sh]" 
-                     style="width:21px; height:21px" value="1" checked>
-
-              <button type="button"
-                      class="btn btn-danger delBtn"
-                      data-bs-id=""
-                      data-bs-text="">
-                      刪除
-              </button><br>`);
+                     style="width:21px; height:21px" value="1" checked><br>`);
               idCount++;
         });
     });
