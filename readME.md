@@ -1,5 +1,9 @@
 遊戲商店布告欄
-nav、carousel、boxes、members可做CRUD，carousel、boxes能上傳圖片
+前端:Bootstrap、javascript
+後端:PHP
+資料庫:MariaDB、phpMyAdmin
+
+nav、carousel、container圖、members可做CRUD，carousel、container圖能上傳圖片
 編輯nav、members後要記得點擊左上角"儲存全部"
 有會員功能，可註冊、登入、登出
 
