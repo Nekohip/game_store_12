@@ -90,7 +90,7 @@
                                         <input type="hidden" name="<?= $i ?>[main_id]" value="<?= $row_sub["main_id"] ?>">
 
                                         <div class="content">
-                                            <label>名稱:</label>
+                                            <label>文字:</label>
                                             <input type="text" name="<?= $i ?>[text]" value="<?= $row_sub["text"] ?>"><br>
                                         </div>
 
@@ -114,7 +114,7 @@
                             </div><br>
                                     
                         <div class="btns">
-                            <button type="submit"
+                            <button type="button"
                                     class="btn btn-secondary subBtn" 
                                     data-bs-mainId="<?= $row_main["id"] ?>">
                                     新增副選單
@@ -240,11 +240,20 @@
             let thisId = $(this).attr("data-bs-mainId");
             $(this).parent().prevAll("br").first().after
             (`<input type="hidden" name="${idCount}[main_id]" value="${thisId}">
-              <input type="text" name="${idCount}[text]" value="">
+              <div class="content">
+                <label>文字:</label>
+                <input type="text" name="${idCount}[text]" value=""><br>
+              </div>
 
-              <label class="modal-text">顯示:</label>
-              <input type="checkbox" name="${idCount}[sh]" 
-                     style="width:21px; height:21px" value="1" checked><br>`);
+              <div class="content">
+                  <label>URL:</label>
+                  <input type="text" name="${idCount}[url]" value=""><br>
+                                            
+                  <label class="modal-text">顯示:</label>
+                  <input type="checkbox" name="${idCount}[sh]" style="width:21px; height:21px" 
+                         value="1" checked>
+              </div>`);
+            
               idCount++;
         });
     });
