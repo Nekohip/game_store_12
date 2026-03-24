@@ -19,65 +19,7 @@
             crossorigin="anonymous" 
             referrerpolicy="no-referrer"></script>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        .sidebar {
-            /* background-color: red; */
-            height: 80vh;
-            width: 13%;
-            margin-top: 144px;
-        }
-
-        .main>.row {
-            display: flex;
-            justify-content: center;
-        }
-
-        .center {
-            /* background-color: green; */
-            /* border: 1px black solid; */
-            /* height: 160vh; */
-            width: 65%;
-            margin-top: 130px;
-            margin-left: 560px;
-            margin-bottom: 50px;
-        }
-
-        .nav-item {
-            margin: 6px 0 0 20px;
-            width: 200px;
-        }
-
-        .btn {
-            margin-top: 10px;
-        }
-
-        #nav1 {
-            max-height: 40px;
-        }
-    
-        #nav2 {
-            margin-top: 40px;
-        }
-
-        .welcome {
-            margin: 6px 20px 0 0;
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        .switch-btn {
-            margin-left: 10px;
-        }
-
-        .nav {
-            margin-top: 10px;
-        }
-        
-    </style>
+    <link rel="stylesheet" href="./css/back_style.css">
 </head>
 <body>
 <?php
@@ -88,13 +30,13 @@
 ?>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" id="nav1">
         <div class="container-fluid con-logo justify-content-end">
-            <a class="navbar-brand logo" href="#">SONY</a>
+            <a class="navbar-brand logo" href="#">SHANG</a>
         </div>
     </nav>
     <nav class="navbar navbar-expand-sm bg-white navbar-white fixed-top shadow" id="nav2">
     <div class="container-fluid">
         <!-- 左上logo -->
-        <a class="navbar-brand" href="/index.php"><img src="./img/icon/TS.png" width="40px"></a>
+        <a class="navbar-brand" href="/index.php"><img src="./img/icon/TS.png" width="50px"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>

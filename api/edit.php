@@ -26,16 +26,10 @@ if($_GET['do'] == "nav")
             if(!empty($row["id"]))
             {
                 $table->update($row);
-                // 檢查用
-                // $sql = $table->update($row);
-                // echo $sql;
             }
             else
             {
                 $table->insert($row);
-                // // 檢查用
-                // $sql = $table->insert($row);
-                // echo $sql;
             } 
         }
     }
@@ -45,8 +39,10 @@ if($_GET['do'] == "nav")
         $table->insert($_POST);
     }
 }
+//註冊、登入
 else if($_GET['do'] == "member")
 {
+    
     if(is_array(reset($_POST)))
     {
         foreach($_POST as &$row)
@@ -54,9 +50,6 @@ else if($_GET['do'] == "member")
             //修改時二維
             $row["admin"] = isset($row["admin"]) ? 1 : 0;
             $table->update($row);
-            // 檢查用
-            // $sql = $table->update($row);
-            // echo $sql;
         }
     }
     else
@@ -82,15 +75,11 @@ else
     if(!empty($_POST["id"]))
     {
         $table->update($_POST);
-        //檢查用
-        // $sql = $table->update($_POST);
-        // echo $sql;
     }
     else
     {
+        unset($_POST["id"]);
         $table->insert($_POST);
-        // $sql = $table->insert($_POST);
-        // echo $sql;
     }   
 }
 header("location:../back.php?do=" . $_GET["do"]);

@@ -71,7 +71,7 @@
         <div class="col-6 cards shadow-lg">
             <div class="content">標題:<?= $row["text"] ?></div>
             <div class="content">
-                圖片:<img src="../upload/<?= $row["img"] ?>" style="width:500px;">
+                圖片:<img src="./upload/<?= $row["img"] ?>" style="width:500px;">
             </div>
             <div class="content"><?= $row["sh"] == 1 ? "顯示中✓" : "已隱藏X"?></div>
             <div class="content btns">
@@ -100,7 +100,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="../api/edit.php?do=boxes" method="post" enctype="multipart/form-data">
+                    <form action="./api/edit.php?do=boxes" method="post" enctype="multipart/form-data">
                         <input type="hidden" id="modalId" name="id" value="" >
 
                         <label for="modalText" class="modal-text">標題:</label>
@@ -132,7 +132,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="../api/del.php?do=boxes" method="post" enctype="multipart/form-data">
+                    <form action="./api/del.php?do=boxes" method="post" enctype="multipart/form-data">
                         <input type="hidden" id="delId" name="id" value="">
 
                         <label for="delModalText" class="modal-text">確定要刪除</label>

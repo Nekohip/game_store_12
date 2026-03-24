@@ -69,7 +69,7 @@
         <input type="submit" form="navForm" value="儲存全部" class="btn btn-primary">
     </div>
     <div class="row">
-        <form id="navForm" action="../api/edit.php?do=nav" method="post">
+        <form id="navForm" action="./api/edit.php?do=nav" method="post">
             <?php foreach($rows as $row_main): ?>
                 <?php if($row_main["main_id"] == 0):?>
                     <div class="col-6 cards shadow-lg">
@@ -90,7 +90,7 @@
                                         <input type="hidden" name="<?= $i ?>[main_id]" value="<?= $row_sub["main_id"] ?>">
 
                                         <div class="content">
-                                            <label>名稱:</label>
+                                            <label>文字:</label>
                                             <input type="text" name="<?= $i ?>[text]" value="<?= $row_sub["text"] ?>"><br>
                                         </div>
 
@@ -114,9 +114,8 @@
                             </div><br>
                                     
                         <div class="btns">
-                            <button type="submit"
+                            <button type="button"
                                     class="btn btn-secondary subBtn" 
-                                    form="navForm" 
                                     data-bs-mainId="<?= $row_main["id"] ?>">
                                     新增副選單
                             </button>
@@ -145,7 +144,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="../api/edit.php?do=nav" method="post">
+                    <form action="./api/edit.php?do=nav" method="post">
 
                         <label for="modalText" class="modal-text">主選單:</label>
                         <input type="text" id="modalText" name="text" value=""><br>
@@ -175,7 +174,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="../api/del.php?do=nav" method="post" enctype="multipart/form-data">
+                    <form action="./api/del.php?do=nav" method="post" enctype="multipart/form-data">
                         <input type="hidden" id="delId" name="id" value="">
 
                         <label for="delModalText" class="modal-text">確定要刪除</label>
@@ -235,24 +234,26 @@
 
         //新增副選單按鈕
         const subBtn = $(".subBtn");
-        let idCount = 40;
+        let idCount = 1;
         subBtn.click(function()
         {
             let thisId = $(this).attr("data-bs-mainId");
             $(this).parent().prevAll("br").first().after
             (`<input type="hidden" name="${idCount}[main_id]" value="${thisId}">
-              <input type="text" name="${idCount}[text]" value="">
+              <div class="content">
+                <label>文字:</label>
+                <input type="text" name="${idCount}[text]" value=""><br>
+              </div>
 
-              <label class="modal-text">顯示:</label>
-              <input type="checkbox" name="${idCount}[sh]" 
-                     style="width:21px; height:21px" value="1" checked>
-
-              <button type="button"
-                      class="btn btn-danger delBtn"
-                      data-bs-id=""
-                      data-bs-text="">
-                      刪除
-              </button><br>`);
+              <div class="content">
+                  <label>URL:</label>
+                  <input type="text" name="${idCount}[url]" value=""><br>
+                                            
+                  <label class="modal-text">顯示:</label>
+                  <input type="checkbox" name="${idCount}[sh]" style="width:21px; height:21px" 
+                         value="1" checked>
+              </div>`);
+            
               idCount++;
         });
     });

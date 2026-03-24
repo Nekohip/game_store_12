@@ -44,10 +44,10 @@ Class DB
     {
         $sql = "UPDATE `$this->table` SET ";
         $tmp = $this->array_to_sql($row);
-        $sql .= join(", ", $tmp) . " WHERE `id` = {$row['id']}";
+        $sql .= join(", ", $tmp) . " WHERE `id` = {$row['id']};";
         
         // 檢查用
-        // return $sql;
+        echo $sql;
         return $this->pdo->exec($sql);
     }
 
@@ -55,9 +55,9 @@ Class DB
     {
         $sql = "INSERT INTO `$this->table` (`";
         $keys = array_keys($row);
-        $sql .= join("`, `", $keys) . "`) VALUES ('" . join("', '", $row) . "')";
+        $sql .= join("`, `", $keys) . "`) VALUES ('" . join("', '", $row) . "');";
         // 檢查用
-        // return $sql;
+        echo $sql;
         return $this->pdo->exec($sql);
     }
 

@@ -18,88 +18,8 @@
             integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" 
             crossorigin="anonymous" 
             referrerpolicy="no-referrer"></script>
-    <style>
-        #nav1 {
-            max-height: 40px;
-        }
-        
-        #nav2 {
-            margin-top: 40px;
-        }
-        
-        .box1, .box2 {
-            width: 100%;
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .box2 {
-            margin-top: 50px;
-        }
-        
-        .carousel {
-            margin-top: 95px;
-        }
-        
-        #img-btn {
-            margin-top: -110px;
-            margin-right: 40px;
-            width: 150px;
-        }
-        #container1 {
-            height: 60vh;
-            margin: auto;
-            background-color: rgba(0, 0, 0, 0.9);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .text {
-            color: white;
-            font-size: 40px;
-            font-family:  "Noto Sans TC Light";
-            display: flex;
-            justify-content: center;
-            padding-top: 20px;
-            padding-bottom: 20px;
-        }
-        
-        .text-name {
-            color: white;
-            font-size: 24px;
-            font-family:  "Noto Sans TC Light";
-            display: flex;
-            justify-content: center;
-            padding-top: 10px
-        }
-        
-        .img-fluid {
-            transition: all 0.5s ease;
-        }
-        
-        .img-fluid:hover {
-            box-shadow: 0 0 25px rgb(0, 255, 242);
-            transform: scale(1.05);
-        }
-        
-        .row {
-            width: 80%;
-            display: flex;
-            justify-content: space-around;
-        }
 
-        .welcome {
-            margin: 6px 20px 0 0;
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        .switch-btn {
-            margin-left: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/index_style.css">
 </head>
 
 <?php
@@ -114,7 +34,7 @@ include "./api/db.php";
     <nav class="navbar navbar-expand-sm bg-white navbar-white fixed-top shadow" id="nav2">
         <div class="container-fluid">
             <!-- 左上logo -->
-            <a class="navbar-brand" href="/index.php"><img src="./img/icon/TS.png" width="40px"></a>
+            <a class="navbar-brand" href="/index.php"><img src="./img/icon/TS.png" width="50px"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -192,7 +112,7 @@ $slideTo = 0;
         <?php if($row["sh"] == 1): ?>
         <!-- 剛進網頁active sh1Ids裡id最小的 -->
         <button type="button" data-bs-target="#carousel" data-bs-slide-to=<?= (string)$slideTo ?>
-        class="<?= $row["id"] == min($sh1Ids) ? 'active' : ''; ?>" id="img-btn">
+        class="<?= $row["id"] == min($sh1Ids) ? 'active' : ''; ?> img-btn" id="">
             <img src="./upload/<?= $row["thumb"]; ?>" class="d-block w-100" alt="thumbnail">
         </button>
         <?php
@@ -239,7 +159,7 @@ $slideTo = 0;
         <?php $rows = $Boxes->all();?>
         <?php foreach($rows as $row): ?>
             <?php if($row["sh"] == 1): ?>
-                <div class="col-2">
+                <div class="col-6 col-sm-2">
                     <div class="box1">
                         <img class="img-fluid " src="./upload/<?= $row['img'] ?>">
                     </div>

@@ -68,7 +68,7 @@
         <input type="submit" form="memForm" value="儲存全部" class="btn btn-primary">
     </div>
     <div class="row">
-        <form id="memForm" action="../api/edit.php?do=member" method="post">
+        <form id="memForm" action="./api/edit.php?do=member" method="post">
         <?php foreach($rows as $row): ?>
             <div class="col-4 cards shadow-lg">
                 <input type="hidden" name="<?= $i ?>[id]" value="<?= $row["id"] ?>"><br>
@@ -114,7 +114,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="../api/edit.php?do=member" method="post">
+                    <form action="./api/edit.php?do=member" method="post">
 
                         <label for="modalText" class="modal-text">Email:</label>
                         <input type="text" id="modalText" name="email" value=""><br>
@@ -148,7 +148,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="../api/del.php?do=member" method="post" enctype="multipart/form-data">
+                    <form action="./api/del.php?do=member" method="post" enctype="multipart/form-data">
                         <input type="hidden" id="delId" name="id" value="">
 
                         <label for="delModalText" class="modal-text">確定要移除</label>
